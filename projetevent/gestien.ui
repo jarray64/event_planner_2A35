@@ -1,0 +1,674 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>gestien</class>
+ <widget class="QDialog" name="gestien">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1493</width>
+    <height>814</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>20</y>
+     <width>161</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_2
+{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);
+
+
+background-color: rgb(0, 0, 100);
+
+border-radius:15px
+}
+
+#pushButton_2:hover{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 127);
+color: rgb(255, 255, 55);
+
+
+background-color: rgb(0, 0, 17);
+
+border-radius:15px
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>event</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_4">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>60</y>
+     <width>161</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_4
+{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);
+
+
+background-color: rgb(0, 0, 100);
+
+border-radius:11px
+}
+
+#pushButton_4:hover{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 127);
+color: rgb(255, 255, 55);
+
+
+background-color: rgb(0, 0, 17);
+
+border-radius:11px
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>marketing</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>110</y>
+     <width>161</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton
+{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);
+
+
+background-color: rgb(0, 0, 100);
+
+border-radius:11px
+}
+
+#pushButton:hover{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 127);
+color: rgb(255, 255, 55);
+
+
+background-color: rgb(0, 0, 17);
+
+border-radius:11px
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>partenaire</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_5">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>150</y>
+     <width>161</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_5
+{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);
+
+
+background-color: rgb(0, 0, 100);
+
+border-radius:11px
+}
+
+#pushButton_5:hover{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 127);
+color: rgb(255, 255, 55);
+
+
+background-color: rgb(0, 0, 17);
+
+border-radius:11px
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>emlyee</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>190</y>
+     <width>161</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pushButton_3
+{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);
+
+
+background-color: rgb(0, 0, 100);
+
+border-radius:11px
+}
+
+#pushButton_3:hover{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 127);
+color: rgb(255, 255, 55);
+
+
+background-color: rgb(0, 0, 17);
+
+border-radius:11px
+}
+
+
+</string>
+   </property>
+   <property name="text">
+    <string>client</string>
+   </property>
+  </widget>
+  <widget class="QTabWidget" name="tabWidget">
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>110</y>
+     <width>1071</width>
+     <height>581</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(180, 156, 18);</string>
+   </property>
+   <property name="currentIndex">
+    <number>2</number>
+   </property>
+   <widget class="QWidget" name="Ajout">
+    <attribute name="title">
+     <string>Ajout</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>70</y>
+       <width>621</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="title">
+      <string>Ajouter evenmet</string>
+     </property>
+     <widget class="QLineEdit" name="lineEdit_id">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>50</y>
+        <width>231</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">boder:none;
+font: 10pt &quot;Palatino Linotype&quot;;
+color : #717072;
+background:transparent;
+border-bottom: 1px solid #717072;
+
+
+	
+
+</string>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>new ID</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_type">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>120</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">boder:none;
+font: 10pt &quot;Palatino Linotype&quot;;
+color : #717072;
+background:transparent;
+border-bottom: 1px solid #717072;
+
+
+	
+
+</string>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>TYPE</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_place">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>180</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">boder:none;
+font: 10pt &quot;Palatino Linotype&quot;;
+color : #717072;
+background:transparent;
+border-bottom: 1px solid #717072;
+
+
+	
+
+</string>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>PLACE</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="pushButton_6">
+     <property name="geometry">
+      <rect>
+       <x>700</x>
+       <y>430</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#pushButton_6
+{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);
+
+
+background-color: rgb(0, 0, 100);
+
+border-radius:11px
+}
+
+#pushButton_6:hover{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 127);
+color: rgb(255, 255, 55);
+
+
+background-color: rgb(0, 0, 17);
+
+border-radius:11px
+}
+
+
+</string>
+     </property>
+     <property name="text">
+      <string>Ajouter</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="tab">
+    <attribute name="title">
+     <string>modifier</string>
+    </attribute>
+    <widget class="QGroupBox" name="groupBox_2">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>50</y>
+       <width>641</width>
+       <height>331</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 14pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="title">
+      <string>Modifier evenement</string>
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+     <property name="checkable">
+      <bool>false</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+     <widget class="QLineEdit" name="lineEdit_idmod">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>110</y>
+        <width>231</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">boder:none;
+font: 10pt &quot;Palatino Linotype&quot;;
+color : #717072;
+background:transparent;
+border-bottom: 1px solid #717072;
+
+
+	
+
+</string>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>enter ID</string>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_typemod">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>160</y>
+        <width>231</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">boder:none;
+font: 10pt &quot;Palatino Linotype&quot;;
+color : #717072;
+background:transparent;
+border-bottom: 1px solid #717072;
+
+
+	
+
+</string>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>update TYPE</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_placemod">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>220</y>
+        <width>241</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">boder:none;
+font: 10pt &quot;Palatino Linotype&quot;;
+color : #717072;
+background:transparent;
+border-bottom: 1px solid #717072;
+
+
+	
+
+</string>
+      </property>
+      <property name="frame">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>update PLACE</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="pushButton_modifier">
+     <property name="geometry">
+      <rect>
+       <x>770</x>
+       <y>410</y>
+       <width>141</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#pushButton_modifier
+{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);
+
+
+background-color: rgb(0, 0, 100);
+
+border-radius:11px
+}
+
+#pushButton_modifier:hover{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 127);
+color: rgb(255, 255, 55);
+
+
+background-color: rgb(0, 0, 17);
+
+border-radius:11px
+}
+
+
+</string>
+     </property>
+     <property name="text">
+      <string>modifier</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="Suppresion">
+    <attribute name="title">
+     <string>Suppresion</string>
+    </attribute>
+    <widget class="QLineEdit" name="lineEdit_sup">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>150</y>
+       <width>251</width>
+       <height>61</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">boder:none;
+font: 10pt &quot;Palatino Linotype&quot;;
+color : #717072;
+background:transparent;
+border-bottom: 1px solid #717072;
+
+
+	
+
+</string>
+     </property>
+     <property name="frame">
+      <bool>false</bool>
+     </property>
+     <property name="placeholderText">
+      <string>delete ID</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_7">
+     <property name="geometry">
+      <rect>
+       <x>770</x>
+       <y>410</y>
+       <width>121</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">#pushButton_7
+{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 255);
+color: rgb(255, 255, 255);
+
+
+background-color: rgb(0, 0, 100);
+
+border-radius:11px
+}
+
+#pushButton_7:hover{
+font: 87 12pt &quot;Segoe UI Black&quot;;
+	background-color: rgb(0, 0, 127);
+color: rgb(255, 255, 55);
+
+
+background-color: rgb(0, 0, 17);
+
+border-radius:11px
+}
+
+
+</string>
+     </property>
+     <property name="text">
+      <string>Supprimer</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>70</y>
+       <width>411</width>
+       <height>231</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>label_4</zorder>
+    <zorder>lineEdit_sup</zorder>
+    <zorder>pushButton_7</zorder>
+   </widget>
+   <widget class="QWidget" name="Consulter">
+    <attribute name="title">
+     <string>Consulter</string>
+    </attribute>
+    <widget class="QTableView" name="tableView">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>90</y>
+       <width>611</width>
+       <height>351</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="labelpic">
+   <property name="geometry">
+    <rect>
+     <x>-40</x>
+     <y>-30</y>
+     <width>1491</width>
+     <height>841</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="res.qrc">:/image/image/background_login.png</pixmap>
+   </property>
+  </widget>
+  <zorder>labelpic</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>pushButton_4</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>pushButton_5</zorder>
+  <zorder>pushButton_3</zorder>
+  <zorder>tabWidget</zorder>
+ </widget>
+ <resources>
+  <include location="res.qrc"/>
+ </resources>
+ <connections/>
+</ui>
