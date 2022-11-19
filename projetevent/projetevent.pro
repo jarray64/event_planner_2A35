@@ -16,20 +16,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    client.cpp \
     conncetion.cpp \
     evenement.cpp \
     exportexcelobject.cpp \
     gestien.cpp \
+    historiques.cpp \
     main.cpp \
     mainwindow.cpp \
     popup.cpp \
     smtp.cpp
 
 HEADERS += \
+    client.h \
     conncetion.h \
     evenement.h \
     exportexcelobject.h \
     gestien.h \
+    historiques.h \
     mainwindow.h \
     popup.h \
     smtp.h \
@@ -45,4 +49,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    historique.qrc \
     res.qrc
+
+DISTFILES +=

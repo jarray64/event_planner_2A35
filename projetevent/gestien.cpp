@@ -10,14 +10,14 @@
 #include "QSqlQuery"
 #include "QPdfWriter"
 #include "QPainter"
-
+#include "client.h"
 #include "mainwindow.h"
 #include "exportexcelobject.h"
 #include <QDebug>
 #include <QSslSocket>
 #include "smtp.h"
 #include "popup.h"
-
+#include "historiques.h"
 gestien::gestien(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::gestien)
@@ -91,6 +91,7 @@ notification();
     ui->label_emp->hide();
     ui->pushButton_ev->setFocus();
     ui->WebBrowser->hide();
+    ui->tab_client->hide();
     QWidget::setWindowTitle("E-event");
     QWidget::setWindowOpacity(50);
 
@@ -159,7 +160,7 @@ int cinclient=0;
               chartView->setRenderHint(QPainter::Antialiasing);
               QPalette pal = qApp->palette();
 
-              chartView->setMaximumWidth(650);
+              chartView->setMaximumWidth(1000);
               chartView->setMaximumHeight(290);
 
               chartView->setParent(ui->statfarme);
@@ -175,6 +176,90 @@ int cinclient=0;
                 ui->combcin->addItem(model->data(value(4).toString())
 }
 */
+              QBarSet *set2 = new QBarSet("Nombre de clients par mois");
+
+              QString cin="";
+              QString nom="";
+              QString prenom="";
+              QString numero="";
+              QString gmail="";
+
+               CLIENT c(nom,prenom,cin,numero,gmail);
+
+                  *set2 <<  c.statistiqueCilents(1)
+                        <<  c.statistiqueCilents(2)
+                        <<  c.statistiqueCilents(3)
+                        <<  c.statistiqueCilents(4)
+                        << c.statistiqueCilents(5)
+                        << c.statistiqueCilents(6)
+                        << c.statistiqueCilents(7)
+                        << c.statistiqueCilents(8)
+                        << c.statistiqueCilents(9)
+                        << c.statistiqueCilents(10)
+                        << c.statistiqueCilents(11)
+                        << c.statistiqueCilents(12) ;
+
+                      //qDebug()<< c.statistiqueCilents(2);
+
+                      QBarSeries *series1 = new QBarSeries();
+
+                      series1->append(set2);
+
+                      QColor color1(0x6568F3);
+                      set2->setColor(color1);
+
+
+                      QChart *chart1 = new QChart();
+
+                          chart1->addSeries(series1);
+                          chart1->setTitle("");
+                         chart1->setBackgroundVisible(false);
+
+                             QStringList categories1;
+                          categories1 << "Jan" << "Fiv" << "Mar" << "Avr" << "Mai" << "Juin" << "Jui" <<"Aou" << "sep" << "Oct" << "Nov" << "Dec" ;
+                          QBarCategoryAxis *axis1 = new QBarCategoryAxis();
+
+
+                          axis1->append(categories1);
+
+                          chart1->createDefaultAxes();
+                          chart1->setAxisX(axis1, series1);
+
+
+                          chart1->setVisible(true);
+                          chart1->legend()->setAlignment(Qt::AlignBottom);
+
+
+                          QChartView *chartView1 = new QChartView(chart1);
+
+                          chartView1->setRenderHint(QPainter::Antialiasing);
+                          QPalette pal1 = qApp->palette();
+
+                          chartView1->setMaximumWidth(650);
+                          chartView1->setMaximumHeight(290);
+
+
+                          chartView1->setMinimumSize(561,331);
+                          chartView1->setParent(ui->statclient);
+                          chartView1->show();
+
+
+                          //*******************add trie options**************************
+                              ui->clientComboBox->addItem("par défaut");
+                              ui->clientComboBox->addItem("nom");
+                              ui->clientComboBox->addItem("prenom");
+                              ui->clientComboBox->addItem("date");
+                              ui->clientComboBox->addItem("gmail");
+                          //*******************add trie options***************************
+
+                        ui->tableView->setModel(c.afficher());
+                          QString trieOption=ui->clientComboBox->currentText();
+                          ui->tableView_2->setModel(c.trierClient(trieOption));
+
+
+                          ui->lineEdit_cin->setValidator(new QIntValidator(0,99999999,this));
+                          ui->lineEdit_Numero->setValidator(new QIntValidator(0,99999999,this));
+
 
               //maillllll
               connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
@@ -280,6 +365,7 @@ void gestien::on_pushButton_ev_clicked()
     ui->loginlab->hide();
     ui->eventlab->show();
     ui->framemail->hide();
+    ui->tab_client->hide();
 
 
 
@@ -408,6 +494,7 @@ void gestien::on_pushButton_cl_clicked()
     ui->loginlab->hide();
     ui->eventlab->hide();
     ui->WebBrowser->hide();
+    ui->tab_client->show();
 
 
 
@@ -818,7 +905,7 @@ void gestien::notification()
                 QString cordonnertype=query.value(2).toString();
                 QString cordonnerplace=query.value(3).toString();
 
-         if(dateE!=dd)
+         if(dateE!="dd")
     {
      popUp->setPopupText(" votre evenement :\n "+cordonnerid+"  "+cordonnertype+ "  est toujour a "+cordonnerplace);
 
@@ -845,3 +932,258 @@ void gestien::on_addimg_clicked()
           ui->upimg->show();
 
 }
+
+void gestien::on_clientadd_clicked()
+{
+    QString Nom=ui->lineEdit_Nom->text();
+    QString Prenom=ui->lineEdit_Prenom->text();
+    QString cin=ui->lineEdit_cin->text();
+    QString Numero=ui->lineEdit_Numero->text();
+    QString Gmail=ui->lineEdit_Gmail->text();
+    CLIENT C(Nom,Prenom,cin,Numero,Gmail);
+    bool test=C.ajouter();
+    if (test)
+    {
+         ui->tableView_2->setModel(c.afficher());
+         Historiques h(Nom, Prenom, Gmail, cin, Numero,"");
+         h.saveClient();
+
+        QMessageBox::information(nullptr, QObject::tr("ajouter"),
+                    QObject::tr("ajouter successful.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+    }
+    else
+    {
+        ui->tableView->setModel(c.afficher());
+        QMessageBox::critical(nullptr, QObject::tr("ajouter"),
+                    QObject::tr("ajouter failed.\n"
+                                "Click Cancel to exit."), QMessageBox::Cancel);
+
+    }
+}
+
+void gestien::on_pushButton_2_clicked()
+{
+
+    int i;
+    QModelIndex index=ui->tableView_2->currentIndex();
+i=index.row();
+QModelIndex in=index.sibling(i,0);
+
+QString val=ui->tableView_2->model()->data(in).toString();
+     bool test=c.supprime(val);
+     if (test)
+     {
+         CLIENT c("","","","","");
+         QSqlQuery clientInfo = c.afficher(val);
+         clientInfo.next();
+         Historiques h(clientInfo.value(1).toString(), clientInfo.value(2).toString(), clientInfo.value(3).toString(), clientInfo.value(0).toString(), clientInfo.value(4).toString(), "");
+         h.saveDeleteClient();
+
+         ui->tableView_2->setModel(c.afficher());
+        QMessageBox::information(nullptr, QObject::tr("supprimer"),
+                     QObject::tr("delete successful.\n"
+                                 "Click Cancel to exit."), QMessageBox::Cancel);
+     }
+     else
+     {
+         QMessageBox::critical(nullptr, QObject::tr("delete"),
+                     QObject::tr("delete failed.\n"
+                                 "Click Cancel to exit."), QMessageBox::Cancel);
+
+     }
+}
+
+void gestien::on_pushButton_3_clicked()
+{
+    QString cin=ui->lineEdit_cin->text();
+    QString prenom=ui->lineEdit_Prenom->text();
+        QString nom=ui->lineEdit_Nom->text();
+          QString numero=ui->lineEdit_Numero->text();
+          QString gmail=ui->lineEdit_Gmail->text();
+
+
+          CLIENT c("","","","","");
+          QSqlQuery clientInfo = c.afficher(cin);
+          clientInfo.next();
+          Historiques h(clientInfo.value(1).toString(), clientInfo.value(2).toString(), clientInfo.value(3).toString(), clientInfo.value(0).toString(), clientInfo.value(4).toString(), "");
+
+
+        CLIENT C(nom,prenom,cin,numero,gmail);
+        bool test=C.modifier(cin);
+        ui->tableView_2->setModel(c.afficher());
+     if(test){
+
+         h.saveUpdateClient(nom, prenom, gmail, cin, numero);
+
+        QMessageBox::information(nullptr,QObject::tr("OK"),
+                                 QObject::tr("modification effectué \n""Click Cancel to exit"),QMessageBox::Cancel);
+    }else{
+         QMessageBox::information(nullptr,QObject::tr("OK"),
+                                  QObject::tr("modification non effectué \n""Click Cancel to exit"),QMessageBox::Cancel);
+
+
+     }
+}
+
+void gestien::on_rechercherClient_textChanged(const QString &arg1)
+{
+    QString chaine_c=ui->rechercherClient->text();
+
+    QString cin="";
+    QString nom="";
+    QString prenom="";
+    QString numero="";
+    QString gmail="";
+
+    CLIENT c(nom,prenom,cin,numero,gmail);
+
+    if(chaine_c !="")
+    {
+    ui->tableView_2->setModel(c.rechercherClient(chaine_c));
+    }
+    else
+    {
+        QString trieOption=ui->clientComboBox->currentText();
+        ui->tableView_2->setModel(c.trierClient(trieOption));
+    }
+}
+
+void gestien::on_trierClientBtn_clicked()
+{
+    QString cin="";
+    QString nom="";
+    QString prenom="";
+    QString numero="";
+    QString gmail="";
+
+    CLIENT c(nom,prenom,cin,numero,gmail);
+    QString trieOption=ui->clientComboBox->currentText();
+     ui->tableView_2->setModel(c.trierClient(trieOption));
+}
+
+void gestien::on_pdfClient_clicked()
+{
+
+    QPdfWriter pdf("C:/Users/pc/Desktop/event_planner_2A35/projetevent/Pdf/List_Client.pdf");
+
+       QPainter painter(&pdf);
+       int i = 4100;
+      const QImage image(":/image/image/logo.png/logo.png");
+                   const QPoint imageCoordinates(155,0);
+                   int width1 = 1600;
+                   int height1 = 1600;
+                   QImage img=image.scaled(width1,height1);
+                   painter.drawImage(imageCoordinates, img );
+
+
+              QColor dateColor(0x4a5bcf);
+              painter.setPen(dateColor);
+
+              painter.setFont(QFont("Montserrat SemiBold", 11));
+              QDate cd = QDate::currentDate();
+              painter.drawText(8400,250,cd.toString("Tunis"));
+              painter.drawText(8100,500,cd.toString("dd/MM/yyyy"));
+
+              QColor titleColor(0x341763);
+              painter.setPen(titleColor);
+              painter.setFont(QFont("Montserrat SemiBold", 25));
+
+              painter.drawText(3000,2700,"Liste des clients");
+
+              painter.setPen(Qt::black);
+              painter.setFont(QFont("Time New Roman", 15));
+              //painter.drawRect(100,100,9400,2500);
+              painter.drawRect(100,3300,9400,500);
+
+              painter.setFont(QFont("Montserrat SemiBold", 10));
+
+              painter.drawText(500,3600,"Cin");
+              painter.drawText(2000,3600,"Nom");
+              painter.drawText(3300,3600,"Prenom");
+              painter.drawText(4500,3600,"Email");
+              painter.drawText(7500,3600,"Numero");
+              painter.setFont(QFont("Montserrat", 10));
+              painter.drawRect(100,3300,9400,9000);
+
+              QSqlQuery query;
+              query.prepare("select * from client");
+              query.exec();
+              int y=4300;
+              while (query.next())
+              {
+                  painter.drawLine(100,y,9490,y);
+                  y+=500;
+                  painter.drawText(500,i,query.value(0).toString());
+                  painter.drawText(2000,i,query.value(1).toString());
+                  painter.drawText(3300,i,query.value(3).toString());
+                  painter.drawText(4500,i,query.value(4).toString());
+                  painter.drawText(7500,i,query.value(2).toString());
+
+                 i = i + 500;
+              }
+              QMessageBox::information(this, QObject::tr("PDF Enregistré!"),
+              QObject::tr("PDF Enregistré!.\n" "Click Cancel to exit."), QMessageBox::Cancel);
+}
+
+void gestien::on_historiqueClient_clicked()
+{
+      QDesktopServices::openUrl(QUrl(tr("file:///C:/Users/pc/Desktop/evant_planner2A35/projetevent/historique.txt")));
+}
+
+void gestien::on_clientFidele_clicked()
+{
+
+    QString cin="";
+    QString nom="";
+    QString prenom="";
+    QString numero="";
+    QString gmail="";
+
+    CLIENT c(nom,prenom,cin,numero,gmail);
+
+    int maxEvent = c.clientFidele();
+    QString max = QString::number(maxEvent);
+
+     //QString cinClientFidele = c.clientFideleDetails();
+     //qDebug() << "cinmaxEvent" << cinClientFidele ;
+
+    QSqlQuery clientInfo = c.clientFideleDetails();
+    clientInfo.next();
+
+
+
+    qDebug() << "maxEvent" << max ;
+
+
+    ui->nbEventLabel->setText(max);
+    ui->clientNameLabel->setText(clientInfo.value(1).toString());
+    ui->clientPrenomLabel->setText(clientInfo.value(3).toString());
+    ui->clientCinLabel->setText(clientInfo.value(0).toString());
+
+
+}
+
+void gestien::on_tableView_2_clicked(const QModelIndex &index)
+{
+    int i;
+i=index.row();
+QModelIndex in=index.sibling(i,0);
+QString val=ui->tableView_2->model()->data(in).toString();
+
+
+    QSqlQuery qry;
+    qry.prepare("select cinclient,nom,prenom,numero,gmail from client where cinclient='"+val+"' " );
+
+
+    if(qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->lineEdit_cin->setText(qry.value(0).toString());
+            ui->lineEdit_Nom->setText(qry.value(1).toString());
+            ui->lineEdit_Prenom->setText(qry.value(2).toString());
+            ui->lineEdit_Numero->setText(qry.value(3).toString());
+            ui->lineEdit_Gmail->setText(qry.value(3).toString());
+
+}}}

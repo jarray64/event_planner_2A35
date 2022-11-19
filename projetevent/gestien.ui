@@ -384,7 +384,7 @@ background-color: rgb(131, 131, 131,30%);
    </property>
    <property name="styleSheet">
     <string notr="true">border-radius:60px;
-background-color: rgb(80, 171, 255);
+background-color: rgb(255, 255, 255);
 </string>
    </property>
    <property name="title">
@@ -1319,6 +1319,442 @@ font: 12pt &quot;OCR A Extended&quot;;</string>
     </property>
    </widget>
   </widget>
+  <widget class="QGroupBox" name="tab_client">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>-10</y>
+     <width>1381</width>
+     <height>911</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-radius:60px;
+background-color: rgb(255, 255, 255);
+</string>
+   </property>
+   <property name="title">
+    <string/>
+   </property>
+   <widget class="QGroupBox" name="groupBox_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>331</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(189, 189, 189);</string>
+    </property>
+    <property name="title">
+     <string>ajouter/modifier</string>
+    </property>
+    <widget class="QLineEdit" name="lineEdit_Nom">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>60</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>nom</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_Prenom">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>100</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>prenom</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_cin">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>140</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>cin</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_Numero">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>220</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>numero</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_Gmail">
+     <property name="geometry">
+      <rect>
+       <x>90</x>
+       <y>180</y>
+       <width>113</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>gmail</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clientadd">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>310</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Ajouter</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>130</x>
+       <y>310</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>modifier</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_2">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>310</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>supprimer</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_7">
+    <property name="geometry">
+     <rect>
+      <x>440</x>
+      <y>90</y>
+      <width>801</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(227, 227, 227);</string>
+    </property>
+    <property name="title">
+     <string>afficher</string>
+    </property>
+    <widget class="QTableView" name="tableView_2">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>40</y>
+       <width>711</width>
+       <height>271</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="rechercherClient">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>10</y>
+       <width>161</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>rechercher</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="trierClientBtn">
+     <property name="geometry">
+      <rect>
+       <x>390</x>
+       <y>10</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Trier</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="clientComboBox">
+     <property name="geometry">
+      <rect>
+       <x>240</x>
+       <y>10</y>
+       <width>131</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="historiqueClient">
+     <property name="geometry">
+      <rect>
+       <x>630</x>
+       <y>330</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>historique</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pdfClient">
+     <property name="geometry">
+      <rect>
+       <x>530</x>
+       <y>330</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>générer pdf</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="clientFidele">
+     <property name="geometry">
+      <rect>
+       <x>440</x>
+       <y>330</y>
+       <width>75</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>client fidèle</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="statclient">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>530</y>
+      <width>591</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(214, 214, 214);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>550</y>
+      <width>301</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(204, 204, 204);</string>
+    </property>
+    <property name="title">
+     <string>client fidèle</string>
+    </property>
+    <widget class="QLabel" name="clientNameLabel">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>50</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_12">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>50</y>
+       <width>41</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>nom:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_14">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>90</y>
+       <width>61</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>prenom:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="clientPrenomLabel">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>90</y>
+       <width>101</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_15">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>130</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>cin:</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="clientCinLabel">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>130</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_13">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>170</y>
+       <width>71</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>nb event: </string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="nbEventLabel">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>170</y>
+       <width>41</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>10</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <zorder>WebBrowser</zorder>
   <zorder>loginlab</zorder>
   <zorder>label_2</zorder>
   <zorder>pushButton_ev</zorder>
@@ -1337,7 +1773,7 @@ font: 12pt &quot;OCR A Extended&quot;;</string>
   <zorder>eventlab</zorder>
   <zorder>label_done</zorder>
   <zorder>label_wrong</zorder>
-  <zorder>WebBrowser</zorder>
+  <zorder>tab_client</zorder>
  </widget>
  <customwidgets>
   <customwidget>

@@ -10,6 +10,7 @@
 #include <QChartView>
 #include <QBarSet>
 #include <QBarSeries>
+#include "client.h"
 namespace Ui {
 class gestien;
 }
@@ -87,12 +88,32 @@ private slots:
 
 
 
+     void on_clientadd_clicked();
+
+     void on_pushButton_2_clicked();
+
+     void on_pushButton_3_clicked();
+
+     void on_rechercherClient_textChanged(const QString &arg1);
+
+     void on_trierClientBtn_clicked();
+
+     void on_pdfClient_clicked();
+
+     void on_historiqueClient_clicked();
+
+     void on_clientFidele_clicked();
+
+     void on_tableView_2_clicked(const QModelIndex &index);
+
 private:
     Ui::gestien *ui;
     evenement etmp;
     evenement tmp;
   QStringList files;
   PopUp *popUp;
+  CLIENT c,c1;
+
 
 };
 
