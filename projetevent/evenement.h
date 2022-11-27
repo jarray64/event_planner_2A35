@@ -6,6 +6,7 @@
 #include <QSqlDatabase>
 #include <QSqlQueryModel>
 #include "QDateTime"
+#include "arduino.h"
 using namespace std;
 
 namespace Ui {
@@ -18,6 +19,7 @@ class evenement : public QDialog
     int id,cinclient;
     QDateTime date_event;
 public:
+
     evenement();
     evenement(int,QString,QString,QDateTime,int);
     QString getNom(){return type;}

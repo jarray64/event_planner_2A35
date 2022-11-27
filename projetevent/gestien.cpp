@@ -18,10 +18,20 @@
 #include "smtp.h"
 #include "popup.h"
 #include "historiques.h"
+#include "arduino.h"
 gestien::gestien(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::gestien)
 {
+    int ret=A.connect_arduino(); // lancer la connexion à arduino
+    switch(ret){
+    case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
+     break;
+    case(1):qDebug() << "arduino is available but not connected to :" <<A.getarduino_port_name();
+       break;
+   case(-1):qDebug() << "arduino is not available";
+}
+
     popUp= new PopUp();
 
     ui->setupUi(this);
@@ -334,6 +344,7 @@ void gestien::on_pushButton_lab_clicked()
     ui->loginlab->show();
     ui->eventlab->hide();
     ui->WebBrowser->hide();
+    ui->tab_client->hide();
 
 
 }
@@ -400,6 +411,7 @@ void gestien::on_pushButton_prt_clicked()
     ui->loginlab->hide();
     ui->eventlab->hide();
     ui->WebBrowser->hide();
+    ui->tab_client->hide();
 
 
 }
@@ -432,6 +444,7 @@ void gestien::on_pushButton_mrk_clicked()
     ui->eventlab->hide();
     ui->WebBrowser->hide();
 
+    ui->tab_client->hide();
 
 }
 
@@ -463,6 +476,7 @@ void gestien::on_pushButton_emp_clicked()
     ui->eventlab->hide();
     ui->WebBrowser->hide();
 
+    ui->tab_client->hide();
 
 
 }
@@ -1184,6 +1198,40 @@ QString val=ui->tableView_2->model()->data(in).toString();
             ui->lineEdit_Nom->setText(qry.value(1).toString());
             ui->lineEdit_Prenom->setText(qry.value(2).toString());
             ui->lineEdit_Numero->setText(qry.value(3).toString());
-            ui->lineEdit_Gmail->setText(qry.value(3).toString());
-
+            ui->lineEdit_Gmail->setText(qry.value(4).toString());
+            ui->numlabel->setText(qry.value(3).toString());
 }}}
+using namespace std;
+
+void gestien::on_pushButton_clicked()
+{
+
+
+QString num=ui->numlabel->text();
+qDebug()<<num<<endl;
+
+
+//A.write_to_arduino("m"); //envoyer 'm' à arduino
+//for (int i=0;i<8;i++){
+//    QString myString = num.at(i);
+
+if (num=="52940699"){
+A.write_to_arduino("a");
+}else if (num=="24262449"){
+    A.write_to_arduino("b");
+    }else if (num=="24262449"){
+    A.write_to_arduino("b");
+}else if (num=="53273182"){
+    A.write_to_arduino("c");
+}
+
+
+
+
+
+
+
+ }
+
+
+

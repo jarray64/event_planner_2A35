@@ -1425,6 +1425,9 @@ background-color: rgb(255, 255, 255);
        <height>23</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
      <property name="text">
       <string>Ajouter</string>
      </property>
@@ -1438,6 +1441,9 @@ background-color: rgb(255, 255, 255);
        <height>23</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
      <property name="text">
       <string>modifier</string>
      </property>
@@ -1450,6 +1456,9 @@ background-color: rgb(255, 255, 255);
        <width>75</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
       <string>supprimer</string>
@@ -1543,6 +1552,9 @@ background-color: rgb(255, 255, 255);
        <height>23</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
      <property name="text">
       <string>historique</string>
      </property>
@@ -1555,6 +1567,9 @@ background-color: rgb(255, 255, 255);
        <width>75</width>
        <height>23</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color :rgb(255, 255, 255)</string>
      </property>
      <property name="text">
       <string>générer pdf</string>
@@ -1569,8 +1584,56 @@ background-color: rgb(255, 255, 255);
        <height>23</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
      <property name="text">
       <string>client fidèle</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>340</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>call</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="numlabel">
+     <property name="geometry">
+      <rect>
+       <x>80</x>
+       <y>345</y>
+       <width>131</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_4">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>340</y>
+       <width>93</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>SMS</string>
      </property>
     </widget>
    </widget>

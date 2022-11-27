@@ -61,3 +61,63 @@ Cet client a été modifié le Saturday 19 November 2022 12:45:28.558
 
  Nom: , Prenom: , Gmail: , cin: , Numero: 
 Cet client a été supprimé le Saturday 19 November 2022 12:45:36.003
+
+*****************************************Update********************************
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+Cet client a été modifié le Friday 25 November 2022 22:20:59.670
+*****************************************Update********************************
+
+*****************************************Update********************************
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 55025447
+Cet client a été modifié le Friday 25 November 2022 22:21:10.547
+*****************************************Update********************************
+
+*****************************************Update********************************
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 55025447
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 53273182
+Cet client a été modifié le Friday 25 November 2022 22:50:48.469
+*****************************************Update********************************
+
+*****************************************Update********************************
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 53273182
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+Cet client a été modifié le Saturday 26 November 2022 23:40:29.605
+*****************************************Update********************************
+
+*****************************************Update********************************
+ Nom: jarrryay, Prenom: abdeo , Gmail: aaa, cin: 156651, Numero: 151515
+ Nom: jarrryay, Prenom: abdeo , Gmail: aaa, cin: 156651, Numero: 24262449
+Cet client a été modifié le Sunday 27 November 2022 21:53:59.623
+*****************************************Update********************************
+
+*****************************************Update********************************
+ Nom: a, Prenom: a, Gmail: 178, cin: 4, Numero: 15
+ Nom: a, Prenom: a, Gmail: 178, cin: 4, Numero: 53273182
+Cet client a été modifié le Sunday 27 November 2022 22:03:41.599
+*****************************************Update********************************
+
+*****************************************Update********************************
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+Cet client a été modifié le Sunday 27 November 2022 22:04:39.690
+*****************************************Update********************************
+
+*****************************************Update********************************
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+Cet client a été modifié le Sunday 27 November 2022 22:04:51.824
+*****************************************Update********************************
+
+*****************************************Update********************************
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 529406
+Cet client a été modifié le Sunday 27 November 2022 22:05:12.826
+*****************************************Update********************************
+
+*****************************************Update********************************
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 529406
+ Nom: jarray, Prenom: abdel, Gmail: jjjjjjjj, cin: 15, Numero: 52940699
+Cet client a été modifié le Sunday 27 November 2022 22:05:24.281
+*****************************************Update********************************

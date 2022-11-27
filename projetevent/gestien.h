@@ -11,6 +11,7 @@
 #include <QBarSet>
 #include <QBarSeries>
 #include "client.h"
+#include "arduino.h"
 namespace Ui {
 class gestien;
 }
@@ -106,6 +107,8 @@ private slots:
 
      void on_tableView_2_clicked(const QModelIndex &index);
 
+     void on_pushButton_clicked();
+
 private:
     Ui::gestien *ui;
     evenement etmp;
@@ -113,8 +116,8 @@ private:
   QStringList files;
   PopUp *popUp;
   CLIENT c,c1;
-
-
+  Arduino A;
+  Arduino B;
 };
 
 #endif // GESTIEN_H
