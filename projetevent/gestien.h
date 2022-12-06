@@ -28,7 +28,7 @@ public:
     ~gestien();
 
 private slots:
-
+   void smscheck();
 
 
 
@@ -151,6 +151,7 @@ private:
   CLIENT c,c1;
   Arduino A;
   Arduino B;
+  QByteArray data;
 
 partenaire p;
 };

@@ -21,6 +21,9 @@
 #include "arduino.h"
 #include"notification.h"
  notification N;
+ QString test,test1;
+ int occ=0;
+
 gestien::gestien(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::gestien)
@@ -38,7 +41,7 @@ gestien::gestien(QWidget *parent) :
 
     ui->setupUi(this);
 notification();
-
+smscheck();
     ui->pushButton_prt->setChecked(false);
     ui->pushButton_cl->setChecked(false);
     ui->pushButton_ev->setChecked(false);
@@ -1296,35 +1299,7 @@ QString val=ui->tableView_2->model()->data(in).toString();
 }}}
 using namespace std;
 
-void gestien::on_pushButton_clicked()
-{
 
-
-QString num=ui->numlabel->text();
-qDebug()<<num<<endl;
-
-
-//A.write_to_arduino("m"); //envoyer 'm' à arduino
-//for (int i=0;i<8;i++){
-//    QString myString = num.at(i);
-
-if (num=="52940699"){
-A.write_to_arduino("a");
-}else if (num=="24262449"){
-    A.write_to_arduino("b");
-    }else if (num=="24262449"){
-    A.write_to_arduino("b");
-}else if (num=="53273182"){
-    A.write_to_arduino("c");
-}
-
-
-
-
-
-
-
- }
 
 
 
@@ -1405,7 +1380,7 @@ void gestien::on_fichier_xl_clicked()
         msg.exec();
     }
     else{
-    QFile file("C:/Users/pc/Desktop/evant_planner2A35/projetevent/excel"+nomFile+".csv");
+    QFile file("C:/Users/pc/Desktop/evant_planner2A35/projetevent/excel/"+nomFile+".csv");
     QString finalmsg="fichier modifie avec succes";
      if(!file.exists()){
      finalmsg="fichier cree avec succes";
@@ -1634,3 +1609,59 @@ void gestien::on_statistique_clicked()
     chartView2->setParent(ui->statpart);
     chartView2->show();
 }
+
+
+void gestien::smscheck()
+{
+
+QSqlQuery q;
+    data=A.read_from_arduino();
+
+   test1=data;
+   test=test1.left(test1.length()-2);
+
+if (test[0]!="�"&& test[0]!="+"&& test!=""&& occ==0)
+{
+ popUp->setPopupText(test);
+ popUp->show();
+ QSqlQuery q;
+
+ q.prepare("insert into massege (MASSEGE)""values(:msg)");
+
+ q.bindValue(":msg", test);
+ q.exec();
+    occ=1;
+
+}
+
+}
+
+void gestien::on_pushButton_clicked()
+{
+
+
+QString num=ui->numlabel->text();
+qDebug()<<num<<endl;
+
+
+//A.write_to_arduino("m"); //envoyer 'm' à arduino
+//for (int i=0;i<8;i++){
+//    QString myString = num.at(i);
+
+if (num=="52940699"){
+A.write_to_arduino("a");
+}else if (num=="24262449"){
+    A.write_to_arduino("b");
+    }else if (num=="24262449"){
+    A.write_to_arduino("b");
+}else if (num=="53273182"){
+    A.write_to_arduino("c");
+}
+
+
+
+
+
+
+
+ }
