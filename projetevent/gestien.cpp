@@ -19,6 +19,8 @@
 #include "popup.h"
 #include "historiques.h"
 #include "arduino.h"
+#include"notification.h"
+ notification N;
 gestien::gestien(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::gestien)
@@ -44,6 +46,7 @@ notification();
     ui->pushButton_emp->setChecked(false);
     ui->pushButton_mrk->setChecked(false);
    ui->tableView->setModel(etmp.afficher());
+   ui->tableView_3->setModel(p.afficher());
     ui->lineEdit_id->setValidator(new QIntValidator(0,99999999,this));
     ui->lineEdit_id->setValidator(new QIntValidator(0,99999999,this));
                                       /*===============EFFFECTS=============================*/
@@ -102,6 +105,8 @@ notification();
     ui->pushButton_ev->setFocus();
     ui->WebBrowser->hide();
     ui->tab_client->hide();
+    ui->tabpartenaire->hide();
+    ui->mailframe->hide();
     QWidget::setWindowTitle("E-event");
     QWidget::setWindowOpacity(50);
 
@@ -140,7 +145,7 @@ int cinclient=0;
 
           series->append(set1);
 
-          QColor color(0x6568F3);
+          QColor color(227, 227, 227);
           set1->setColor(color);
 
 
@@ -274,6 +279,90 @@ int cinclient=0;
               //maillllll
               connect(ui->sendBtn, SIGNAL(clicked()),this, SLOT(sendMail()));
               connect(ui->browseBtn, SIGNAL(clicked()), this, SLOT(browse()));
+
+
+
+
+
+
+
+
+
+              /****************************************************************/
+
+              //ui->stackedWidget_2->setCurrentIndex(1);
+                 QSqlQueryModel * model= new QSqlQueryModel();
+                 model->setQuery("select * from partenaire where prix < 500 ");
+                 float place1=model->rowCount();
+                 model->setQuery("select * from partenaire where prix  between 500 and 1500 ");
+                 float place2=model->rowCount();
+                 model->setQuery("select * from partenaire where prix > 1500 ");
+                 float place3=model->rowCount();
+                 float total=place1+place2+place3;
+
+                 QString a=QString("inferier 500 DT . "+QString::number((place1*100)/total,'f',2)+"%" );
+                 QString b=QString("entre 500 et 1500 DT.  "+QString::number((place2*100)/total,'f',2)+"%" );
+                 QString cc=QString("plus de 1500 DT.   "+QString::number((place3*100)/total,'f',2)+"%" );
+
+                 QPieSeries *series2 = new QPieSeries();//PieSeries object calculates the percentage the actual size of the slice in the chart.
+                 series2->append(a,place1);
+                 series2->append(b,place2);//concatiner 2 chaines
+                 series2->append(cc,place3);
+                 if (place1!=0)
+                 {QPieSlice *slice = series2->slices().at(0);//the percentage the actual slice
+                     slice->setLabelVisible();
+                     slice->setPen(QPen(Qt::red));}
+                 if ( place2!=0)
+                 {
+                     // Add label, explode and define brush for 2nd slice
+                     QPieSlice *slice1 = series2->slices().at(1);
+                     //slice1->setExploded();
+                     slice1->setLabelVisible();
+                 }
+                 if(place3!=0)
+                 {
+                     // Add labels to rest of slices
+                     QPieSlice *slice2 = series2->slices().at(2);
+                     //slice1->setExploded();
+                     slice2->setLabelVisible();// Sets the label visibility for all contours in the collection
+                 }
+                 // Create the chart widget
+               //  QChart *chart = new QChart();
+                 // Add data to chart with title and hide legend
+          //       chart->addSeries(series); // widget
+          //       chart->setTitle("PRIX  "+ QString::number(total));
+          //       chart->legend()->hide();
+                 // Used to display the chart
+          //      // QChartView *chartView = new QChartView(chart);//creation de la fenetre de widget
+          //       chartView->setRenderHint(QPainter::Antialiasing);
+          //       chartView->resize(1000,500);
+          //       chartView->show();
+                 QChart *chart2 = new QChart();
+
+                     chart2->addSeries(series2);
+                     chart2->setTitle("");
+                    chart2->setBackgroundVisible(false);
+
+
+
+                 chart2->setVisible(true);
+                 chart2->legend()->setAlignment(Qt::AlignBottom);
+
+
+                 QChartView *chartView2 = new QChartView(chart2);
+
+                 chartView2->setRenderHint(QPainter::Antialiasing);
+                 QPalette pal2 = qApp->palette();
+
+                 chartView2->setMaximumWidth(731);
+                 chartView2->setMaximumHeight(381);
+                 chartView2->setMinimumWidth(731);
+                 chartView2->setMinimumHeight(381);
+                 chartView2->setParent(ui->statpart);
+                 chartView2->show();
+                 connect(ui->sendBtn_2, SIGNAL(clicked()),this, SLOT(sendMailpart()));
+                 connect(ui->browseBtn_2, SIGNAL(clicked()), this, SLOT(browsepart()));
+
 }
 
 gestien::~gestien()
@@ -345,7 +434,8 @@ void gestien::on_pushButton_lab_clicked()
     ui->eventlab->hide();
     ui->WebBrowser->hide();
     ui->tab_client->hide();
-
+ui->tabpartenaire->hide();
+ ui->mailframe->hide();
 
 }
 
@@ -377,8 +467,8 @@ void gestien::on_pushButton_ev_clicked()
     ui->eventlab->show();
     ui->framemail->hide();
     ui->tab_client->hide();
-
-
+ui->tabpartenaire->hide();
+ ui->mailframe->hide();
 
 
 
@@ -412,8 +502,8 @@ void gestien::on_pushButton_prt_clicked()
     ui->eventlab->hide();
     ui->WebBrowser->hide();
     ui->tab_client->hide();
-
-
+ui->tabpartenaire->show();
+ ui->mailframe->hide();
 }
 
 void gestien::on_pushButton_mrk_clicked()
@@ -445,7 +535,8 @@ void gestien::on_pushButton_mrk_clicked()
     ui->WebBrowser->hide();
 
     ui->tab_client->hide();
-
+ui->tabpartenaire->hide();
+ ui->mailframe->hide();
 }
 
 void gestien::on_pushButton_emp_clicked()
@@ -477,7 +568,8 @@ void gestien::on_pushButton_emp_clicked()
     ui->WebBrowser->hide();
 
     ui->tab_client->hide();
-
+ui->tabpartenaire->hide();
+ ui->mailframe->hide();
 
 }
 
@@ -509,7 +601,8 @@ void gestien::on_pushButton_cl_clicked()
     ui->eventlab->hide();
     ui->WebBrowser->hide();
     ui->tab_client->show();
-
+ui->tabpartenaire->hide();
+ ui->mailframe->hide();
 
 
 }
@@ -871,13 +964,13 @@ void  gestien::browse()
 }
 void   gestien::sendMail()
 {
-    Smtp* smtp = new Smtp("abdelmonam.jarray@esprit.tn",ui->mail_pass->text(), "smtp.gmail.com");
+    Smtp* smtp = new Smtp("monam.jr123@gmail.com",ui->mail_pass->text(), "smtp.gmail.com");
     connect(smtp, SIGNAL(status(QString)), this, SLOT(mailsent(QString)));
 
     if( !files.isEmpty() )
-        smtp->sendMail("abdelmonam.jarray@esprit.tn", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText(), files );
+        smtp->sendMail("monam.jr123@gmail.com", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText(), files );
     else
-        smtp->sendMail("abdelmonam.jarray@esprit.tn", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText());
+        smtp->sendMail("monam.jr123@gmail.com", ui->rcpt->text() , ui->subject->text(),ui->msg->toPlainText());
 }
 void   gestien::mailsent(QString status)
 {
@@ -1235,3 +1328,309 @@ A.write_to_arduino("a");
 
 
 
+void gestien::on_ajouter_partenair_clicked()
+{
+    int id=ui->le_id->text().toInt(); //convertir en entier
+      int num_partenaire=ui->le_num->text().toInt();
+       int prix=ui->le_prix->text().toInt();
+      QString nom=ui->le_nom->text();
+      QString email=ui->le_email->text();
+
+      partenaire p(id,num_partenaire,prix,nom,email);
+
+      bool test=p.ajouter();
+      if(test)
+      {
+
+N.notification_ajoutpartenair();
+          ui->tableView_3->setModel( p.afficher());
+          QMessageBox::information(nullptr,QObject::tr("ok"),
+                                 QObject::tr("ajout effectue\n"
+                                             "click cancel to exit."),QMessageBox::Cancel);
+
+      }
+      else  QMessageBox::critical(nullptr,QObject::tr("Not ok"),
+                                     QObject::tr("ajout non effectue\n"
+                                                 "click cancel to exit."),QMessageBox::Cancel);
+      ui->le_id->clear();
+      ui->le_num->clear();
+      ui->le_prix->clear();
+       ui->le_nom->clear();
+       ui->le_email->clear();
+}
+
+void gestien::on_suprimer_partenair_clicked()
+{
+    bool i;
+         int id_del;
+
+
+         id_del=ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),0)).toInt();
+
+         i=p.supprimer(id_del);
+         if(i)
+         {
+N.notification_supprimerpartenair();
+             ui->tableView_3->setModel(p.afficher());
+             QMessageBox::information(nullptr, QObject::tr("OK"),
+                         QObject::tr("suppression effectué.\n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel);
+
+     }
+         else
+            { QMessageBox::critical(nullptr, QObject::tr("not OK"),
+                         QObject::tr("problème de suppression.\n"
+                                     "Click Cancel to exit."), QMessageBox::Cancel); }
+}
+
+void gestien::on_tableView_3_clicked(const QModelIndex &index)
+{
+    ui->le_id->setText(ui->tableView_3->model()->data(ui->tableView_3->model()->index(index.row(),0)).toString());
+    ui->le_num->setText(ui->tableView_3->model()->data(ui->tableView_3->model()->index(index.row(),1)).toString());
+    ui->le_prix->setText(ui->tableView_3->model()->data(ui->tableView_3->model()->index(index.row(),2)).toString());
+    ui->le_nom->setText(ui->tableView_3->model()->data(ui->tableView_3->model()->index(index.row(),3)).toString());
+    ui->le_email->setText(ui->tableView_3->model()->data(ui->tableView_3->model()->index(index.row(),4)).toString());
+
+
+
+}
+
+void gestien::on_fichier_xl_clicked()
+{
+    QString nomFile=ui->fichier->text();
+    QMessageBox msg;
+    if(!nomFile.length()){
+
+        msg.setText("entrer le nom du fichier");
+        msg.exec();
+    }
+    else{
+    QFile file("C:/Users/pc/Desktop/evant_planner2A35/projetevent/excel"+nomFile+".csv");
+    QString finalmsg="fichier modifie avec succes";
+     if(!file.exists()){
+     finalmsg="fichier cree avec succes";
+     }
+    file.open(QFile::WriteOnly | QFile::Text);
+    QTextStream txt(&file);
+    for(int i=0;i<100;i++){
+
+    QString id= ui->tableView_3->model()->index(i,0).data().toString();
+        QString num_partenaire= ui->tableView_3->model()->index(i,3).data().toString();
+    QString prix= ui->tableView_3->model()->index(i,1).data().toString();
+    QString nom= ui->tableView_3->model()->index(i,2).data().toString();
+    QString email= ui->tableView_3->model()->index(i,2).data().toString();
+
+
+    if(id.length()){
+
+    txt<< "id: '"+ id +"'       ";
+    txt<< "'num_partenaire : '"+ num_partenaire   +"'      ";
+    txt<< "'prix: '"+ prix +"'      ";
+     txt<< "'nom: '"+ nom +"'     ";
+    txt<< "'email: '"+ email +"' \n";
+
+    }
+    }
+    msg.setText(finalmsg);
+    msg.exec();
+    file.close();
+    }
+}
+
+void gestien::on_pushButton_5_clicked()
+{
+    QString text ="dosssier partenaire details :"+ ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),1)).toString()
+                         +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),2)).toString()
+                         +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),3)).toString()
+                         +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),4)).toString()
+                         +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),5)).toString()
+                         +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),6)).toString();
+                 //text="user data";
+                 using namespace qrcodegen;
+                   // Create the QR Code object
+                   QrCode qr = QrCode::encodeText( text.toUtf8().data(), QrCode::Ecc::MEDIUM );
+                   qint32 sz = qr.getSize();
+                   QImage im(sz,sz, QImage::Format_RGB32);
+                     QRgb black = qRgb(  0,  0,  0);
+                     QRgb white = qRgb(255,255,255);
+                   for (int y = 0; y < sz; y++)
+                     for (int x = 0; x < sz; x++)
+                       im.setPixel(x,y,qr.getModule(x, y) ? black : white );
+                   ui->qr_code->setPixmap( QPixmap::fromImage(im.scaled(256,256,Qt::KeepAspectRatio,Qt::FastTransformation),Qt::MonoOnly) );
+
+}
+
+
+void gestien::on_rechercher_partenaire_textChanged(const QString &arg1)
+{
+    ui->tableView_3->setModel(p.Recherche(arg1));
+}
+
+void gestien::on_trier_partenaire_activated()
+{
+    if (ui->trier_partenaire->currentText()=="Tri Par ID")
+    {
+        ui->tableView_3->setModel(p.trierpartenaireParid());
+    }
+    else if(ui->trier_partenaire->currentText()=="Tri Par NOM")
+    {
+        ui->tableView_3->setModel(p.trierpartenairenom());
+    }
+    else
+    {
+        ui->tableView_3->setModel(p.trierpartenaireParnum_partenaire());
+    }
+}
+
+void gestien::on_modifier_partenair_clicked()
+{
+    int id=ui->le_id->text().toInt();
+        int num_partenaire=ui->le_num->text().toInt();
+        int prix=ui->le_prix->text().toInt();
+        QString nom=ui->le_nom->text();
+        QString email=ui->le_email->text();
+
+        partenaire p(id,num_partenaire,prix,nom,email);
+
+            bool test=p.modifierpartenaire(p.getid(),p.getnum_partenaire(),p.getprix(),p.getnom(),p.getemail());
+
+            QMessageBox msgBox;
+
+            if(test)
+                {
+N.notification_modifierpartenair();
+                    msgBox.setText("Modification avec succes.");
+                    ui->tableView_3->setModel(p.afficher());
+                }
+            else
+                msgBox.setText("Echec de Modification!!!!!!");
+                msgBox.exec();
+}
+
+void gestien::on_pushButton_7_clicked()
+{
+     ui->mailframe->show();
+}
+
+void gestien::on_pushButton_6_clicked()
+{
+     ui->mailframe->hide();
+}
+
+
+
+
+
+void  gestien::browsepart()
+{
+    files.clear();
+   QFileDialog dialog(this);
+    dialog.setDirectory(QDir::homePath());
+    dialog.setFileMode(QFileDialog::ExistingFiles);
+
+    if (dialog.exec())
+        files = dialog.selectedFiles();
+
+    QString fileListString;
+    foreach(QString file, files)
+        fileListString.append( "\"" + QFileInfo(file).fileName() + "\" " );
+
+    ui->file->setText( fileListString );
+
+}
+void   gestien::sendMailpart()
+{
+    Smtp* smtp = new Smtp("abdelmonam.jarray@esprit.tn",ui->mail_pass_2->text(), "smtp.gmail.com");
+    connect(smtp, SIGNAL(status(QString)), this, SLOT(mailsent(QString)));
+
+    if( !files.isEmpty() )
+        smtp->sendMail("abdelmonam.jarray@esprit.tn", ui->rcpt_2->text() , ui->subject_2->text(),ui->msg_2->toPlainText(), files );
+    else
+        smtp->sendMail("abdelmonam.jarray@esprit.tn", ui->rcpt_2->text() , ui->subject_2->text(),ui->msg_2->toPlainText());
+}
+void   gestien::mailsentpart(QString status)
+{
+
+    if(status == "Message sent")
+    { ui->label_done->show();
+    ui->pushButton_hide->show();
+    }
+    ui->rcpt_2->clear();
+    ui->subject_2->clear();
+    ui->file_2->clear();
+    ui->msg_2->clear();
+    ui->mail_pass_2->clear();
+}
+
+void gestien::on_statistique_clicked()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+    model->setQuery("select * from partenaire where prix < 500 ");
+    float place1=model->rowCount();
+    model->setQuery("select * from partenaire where prix  between 500 and 1500 ");
+    float place2=model->rowCount();
+    model->setQuery("select * from partenaire where prix > 1500 ");
+    float place3=model->rowCount();
+    float total=place1+place2+place3;
+
+    QString a=QString("inferier 500 DT . "+QString::number((place1*100)/total,'f',2)+"%" );
+    QString b=QString("entre 500 et 1500 DT.  "+QString::number((place2*100)/total,'f',2)+"%" );
+    QString cc=QString("plus de 1500 DT.   "+QString::number((place3*100)/total,'f',2)+"%" );
+
+    QPieSeries *series2 = new QPieSeries();//PieSeries object calculates the percentage the actual size of the slice in the chart.
+    series2->append(a,place1);
+    series2->append(b,place2);//concatiner 2 chaines
+    series2->append(cc,place3);
+    if (place1!=0)
+    {QPieSlice *slice = series2->slices().at(0);//the percentage the actual slice
+        slice->setLabelVisible();
+        slice->setPen(QPen(Qt::red));}
+    if ( place2!=0)
+    {
+        // Add label, explode and define brush for 2nd slice
+        QPieSlice *slice1 = series2->slices().at(1);
+        //slice1->setExploded();
+        slice1->setLabelVisible();
+    }
+    if(place3!=0)
+    {
+        // Add labels to rest of slices
+        QPieSlice *slice2 = series2->slices().at(2);
+        //slice1->setExploded();
+        slice2->setLabelVisible();// Sets the label visibility for all contours in the collection
+    }
+    // Create the chart widget
+  //  QChart *chart = new QChart();
+    // Add data to chart with title and hide legend
+//       chart->addSeries(series); // widget
+//       chart->setTitle("PRIX  "+ QString::number(total));
+//       chart->legend()->hide();
+    // Used to display the chart
+//      // QChartView *chartView = new QChartView(chart);//creation de la fenetre de widget
+//       chartView->setRenderHint(QPainter::Antialiasing);
+//       chartView->resize(1000,500);
+//       chartView->show();
+    QChart *chart2 = new QChart();
+
+        chart2->addSeries(series2);
+        chart2->setTitle("");
+       chart2->setBackgroundVisible(false);
+
+
+
+    chart2->setVisible(true);
+    chart2->legend()->setAlignment(Qt::AlignBottom);
+
+
+    QChartView *chartView2 = new QChartView(chart2);
+
+    chartView2->setRenderHint(QPainter::Antialiasing);
+    QPalette pal2 = qApp->palette();
+
+    chartView2->setMaximumWidth(731);
+    chartView2->setMaximumHeight(381);
+    chartView2->setMinimumWidth(731);
+    chartView2->setMinimumHeight(381);
+    chartView2->setParent(ui->statpart);
+    chartView2->show();
+}

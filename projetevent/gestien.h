@@ -12,6 +12,9 @@
 #include <QBarSeries>
 #include "client.h"
 #include "arduino.h"
+#include "notification.h"
+#include "partenaire.h"
+#include"qrcode.h"
 namespace Ui {
 class gestien;
 }
@@ -109,6 +112,36 @@ private slots:
 
      void on_pushButton_clicked();
 
+
+
+     void on_ajouter_partenair_clicked();
+
+     void on_suprimer_partenair_clicked();
+
+     void on_tableView_3_clicked(const QModelIndex &index);
+
+     void on_fichier_xl_clicked();
+
+     void on_pushButton_5_clicked();
+
+
+     void on_rechercher_partenaire_textChanged(const QString &arg1);
+
+     void on_trier_partenaire_activated();
+
+     void on_modifier_partenair_clicked();
+
+     void on_pushButton_7_clicked();
+
+     void on_pushButton_6_clicked();
+     void sendMailpart();
+     void mailsentpart(QString);
+     void browsepart();
+
+
+
+     void on_statistique_clicked();
+
 private:
     Ui::gestien *ui;
     evenement etmp;
@@ -118,6 +151,8 @@ private:
   CLIENT c,c1;
   Arduino A;
   Arduino B;
+
+partenaire p;
 };
 
 #endif // GESTIEN_H

@@ -25,7 +25,10 @@ SOURCES += \
     historiques.cpp \
     main.cpp \
     mainwindow.cpp \
+    notification.cpp \
+    partenaire.cpp \
     popup.cpp \
+    qrcode.cpp \
     smtp.cpp
 
 HEADERS += \
@@ -37,7 +40,10 @@ HEADERS += \
     gestien.h \
     historiques.h \
     mainwindow.h \
+    notification.h \
+    partenaire.h \
     popup.h \
+    qrcode.h \
     smtp.h \
     webaxwidget.h
 
