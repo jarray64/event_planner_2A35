@@ -15,6 +15,21 @@
 #include "notification.h"
 #include "partenaire.h"
 #include"qrcode.h"
+#include "societe.h"
+#include <QMainWindow>
+#include <QMediaPlaylist>
+#include <QMediaPlayer>//pub
+#include <QVideoWidget>//pub
+#include <QAbstractVideoSurface>
+#include <QFileDialog>   //pup
+#include <QProgressBar>  //pub
+#include <QSlider>//pub
+#include <QTranslator>
+#include<QComboBox>
+#include <QDialog>
+ #include <QPieSlice>
+#include <QPieSeries>
+#include <QtCharts>
 namespace Ui {
 class gestien;
 }
@@ -142,10 +157,42 @@ private slots:
 
      void on_statistique_clicked();
 
+
+
+     void on_add_mark_clicked();
+
+     void on_mod_mark_clicked();
+
+     void on_pdf_mark_clicked();
+
+     void on_browse_mark_clicked();
+
+     void on_tableView_4_clicked(const QModelIndex &index);
+
+     void on_del_mark_clicked();
+
+     void on_triemark_clicked();
+
+     void on_recherchemark_textChanged(const QString &arg1);
+
+     void on_parametreee_clicked();
+
+
+
+     void on_play_2_clicked();
+
+     void on_pause_2_clicked();
+
+     void on_stop_2_clicked();
+
+     void on_mute_2_clicked();
+
+     void on_volume_2_valueChanged(int value);
+
 private:
     Ui::gestien *ui;
     evenement etmp;
-    evenement tmp;
+
   QStringList files;
   PopUp *popUp;
   CLIENT c,c1;
@@ -154,6 +201,14 @@ private:
   QByteArray data;
 
 partenaire p;
+
+Societe S,S1;
+QMediaPlayer* player;//pub
+QVideoWidget* vw;//pub
+QMediaPlayer * mMediaPlayer;
+QTranslator *translator=new QTranslator;
+projeth tmp;
+
 };
 
 #endif // GESTIEN_H

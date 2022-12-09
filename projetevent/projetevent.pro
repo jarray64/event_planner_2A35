@@ -1,5 +1,5 @@
 QT       +=  core gui sql serialport network multimedia multimediawidgets charts printsupport widgets axcontainer
-
+QT       += core gui multimedia multimediawidgets
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -19,6 +19,7 @@ SOURCES += \
     arduino.cpp \
     client.cpp \
     conncetion.cpp \
+    employe.cpp \
     evenement.cpp \
     exportexcelobject.cpp \
     gestien.cpp \
@@ -29,12 +30,14 @@ SOURCES += \
     partenaire.cpp \
     popup.cpp \
     qrcode.cpp \
-    smtp.cpp
+    smtp.cpp \
+    societe.cpp
 
 HEADERS += \
     arduino.h \
     client.h \
     conncetion.h \
+    employe.h \
     evenement.h \
     exportexcelobject.h \
     gestien.h \
@@ -45,6 +48,7 @@ HEADERS += \
     popup.h \
     qrcode.h \
     smtp.h \
+    societe.h \
     webaxwidget.h
 
 FORMS += \

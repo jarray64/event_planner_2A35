@@ -9,6 +9,8 @@ class Connection
 public:
     Connection();
     bool createconnect();
+    int Authentification(QString login,QString pwd);
+
 };
 
 #endif // CONNCETION_H

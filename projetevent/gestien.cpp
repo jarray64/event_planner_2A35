@@ -20,14 +20,66 @@
 #include "historiques.h"
 #include "arduino.h"
 #include"notification.h"
+#include  "QVideoSurfaceFormat"
+#include<QGraphicsView>
+#include<QtPrintSupport/QPrintDialog>
+#include<QPdfWriter>
+#include<QSqlQueryModel>
+#include<QSqlQuery>
+#include<QSystemTrayIcon>
+#include<QMediaPlayer>
+#include<QUrlQuery>
+#include <QDate>
+#include<QMessageBox>
+#include<QSqlTableModel>
+#include <QtPrintSupport/QPrinter>
+#include <QDesktopServices>
+#include <QCoreApplication>
+#include <QSqlDatabase>
+#include <qmessagebox.h>
+#include <QSqlQuery>
+#include <QIntValidator>
+#include <QValidator>
+#include "QMessageBox"
+#include<QPrinter>
+#include<QPrintDialog>
+#include "notification.h"
+#include <QtCharts>
+#include <QChartView>
+#include <QPieSeries>
+#include <QSqlQuery>
+#include "QGraphicsItem"
+#include "QGraphicsView"
+#include "QGraphicsVideoItem"
  notification N;
  QString test,test1;
  int occ=0;
+QVideoWidget * videoWidget;
+
 
 gestien::gestien(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::gestien)
 {
+mMediaPlayer = new QMediaPlayer(this);
+    mMediaPlayer->setMedia(QUrl::fromLocalFile("C:/Users/pc/Desktop/evant_planner2A35/projetevent/media/12.WAV"));
+    mMediaPlayer->setVolume(20);
+        mMediaPlayer->play();
+
+      /* player = new QMediaPlayer(this);//pub
+            vw = new QVideoWidget(this);
+     QString pathVideo="C:/Users/pc/Desktop/evant_planner2A35/projetevent/media/coffeepub.mp4";
+      player->setMedia(QUrl::fromLocalFile(pathVideo));
+
+  player->setVideoOutput(vw);
+       vw->setGeometry(340,340,400,200);
+
+  player->play();//pub*/
+
+
+
+
+
     int ret=A.connect_arduino(); // lancer la connexion à arduino
     switch(ret){
     case(0):qDebug()<< "arduino is available and connected to : "<< A.getarduino_port_name();
@@ -41,7 +93,7 @@ gestien::gestien(QWidget *parent) :
 
     ui->setupUi(this);
 notification();
-smscheck();
+//smscheck();
     ui->pushButton_prt->setChecked(false);
     ui->pushButton_cl->setChecked(false);
     ui->pushButton_ev->setChecked(false);
@@ -110,6 +162,8 @@ smscheck();
     ui->tab_client->hide();
     ui->tabpartenaire->hide();
     ui->mailframe->hide();
+    ui->tabmarketing->hide();
+     ui->parametre->hide();
     QWidget::setWindowTitle("E-event");
     QWidget::setWindowOpacity(50);
 
@@ -270,7 +324,7 @@ int cinclient=0;
                               ui->clientComboBox->addItem("gmail");
                           //*******************add trie options***************************
 
-                        ui->tableView->setModel(c.afficher());
+                        ui->tableView_2->setModel(c.afficher());
                           QString trieOption=ui->clientComboBox->currentText();
                           ui->tableView_2->setModel(c.trierClient(trieOption));
 
@@ -366,6 +420,25 @@ int cinclient=0;
                  connect(ui->sendBtn_2, SIGNAL(clicked()),this, SLOT(sendMailpart()));
                  connect(ui->browseBtn_2, SIGNAL(clicked()), this, SLOT(browsepart()));
 
+                 //****************************************************************************************************************************
+
+
+
+
+                 ui->le_contact_mark->setValidator(new QIntValidator(0,999999999, this));
+                 ui->tableView_4->setModel(S.afficher());
+                 ui->tab_his_mark->setModel(tmp.afficherhis()) ;
+
+
+
+                 ui->markcombo->addItem("par défaut");
+                 ui->markcombo->addItem("nom");
+                 ui->markcombo->addItem("mail");
+                 ui->markcombo->addItem("facebook");
+                 ui->markcombo->addItem("contact");
+
+
+
 }
 
 gestien::~gestien()
@@ -385,7 +458,7 @@ void gestien::on_pushButton_modifier_clicked()
    int cinclient=ui->combcin->currentText().toUInt();
     evenement E(id,type,place,date,cinclient);
     bool test=E.modifier(id);
-    ui->tableView->setModel(tmp.afficher());
+    ui->tableView->setModel(etmp.afficher());
  if(test){
 
      ui->label_done->show();
@@ -439,6 +512,9 @@ void gestien::on_pushButton_lab_clicked()
     ui->tab_client->hide();
 ui->tabpartenaire->hide();
  ui->mailframe->hide();
+ ui->tabmarketing->hide();
+
+
 
 }
 
@@ -472,7 +548,7 @@ void gestien::on_pushButton_ev_clicked()
     ui->tab_client->hide();
 ui->tabpartenaire->hide();
  ui->mailframe->hide();
-
+ ui->tabmarketing->hide();
 
 
 }
@@ -507,6 +583,8 @@ void gestien::on_pushButton_prt_clicked()
     ui->tab_client->hide();
 ui->tabpartenaire->show();
  ui->mailframe->hide();
+  ui->tabmarketing->hide();
+
 }
 
 void gestien::on_pushButton_mrk_clicked()
@@ -540,6 +618,8 @@ void gestien::on_pushButton_mrk_clicked()
     ui->tab_client->hide();
 ui->tabpartenaire->hide();
  ui->mailframe->hide();
+  ui->tabmarketing->show();
+
 }
 
 void gestien::on_pushButton_emp_clicked()
@@ -573,6 +653,7 @@ void gestien::on_pushButton_emp_clicked()
     ui->tab_client->hide();
 ui->tabpartenaire->hide();
  ui->mailframe->hide();
+ ui->tabmarketing->hide();
 
 }
 
@@ -607,6 +688,7 @@ void gestien::on_pushButton_cl_clicked()
 ui->tabpartenaire->hide();
  ui->mailframe->hide();
 
+ ui->tabmarketing->hide();
 
 }
 
@@ -673,7 +755,7 @@ void gestien::on_pushButton_hide_clicked()
     ui->pushButton_hide->hide();
      ui->WebBrowser->hide();
      ui->framemail->hide();
-
+ui->parametre->hide();
 }
 
 void gestien::on_trie_commande_clicked()
@@ -1665,3 +1747,270 @@ A.write_to_arduino("a");
 
 
  }
+
+void gestien::on_add_mark_clicked()
+{
+
+    QString nom=ui->le_nom_mark->text();
+    QString mail=ui->le_mail_mark->text();
+    QString fcb=ui->le_fcb_mark->text();
+    QString produit=ui->le_produit_mark->text();
+    int contact=ui->le_contact_mark->text().toInt();
+
+
+  Societe S(nom,mail,fcb,produit,contact);
+
+    bool test=S.ajouter();
+    if(test)
+    {
+         ui->tableView_4->setModel(S.afficher());
+
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                notifyIcon->show();
+                notifyIcon->showMessage("MARKETING ","marketing ajouté",QSystemTrayIcon::Information,15000);
+                srand (time(NULL));
+                QDate d = QDate::currentDate() ;
+                 QString datee =d.toString("dd / MM / yyyy ") ;
+                 QString fn="ajouter" ;
+                QString nom1 = ui->le_nom_mark->text();
+              projeth pp(nom1,datee,fn) ;
+              bool test1=pp.ajoutehis() ;
+               ui->tab_his_mark->setModel(tmp.afficherhis()) ;
+  }
+  else
+    {
+              QSystemTrayIcon *notifyIcon= new QSystemTrayIcon;
+                            notifyIcon->show();
+        notifyIcon->showMessage("MARKETING ","marketing non ajouté",QSystemTrayIcon::Information,15000);
+    }
+            ui->le_nom_mark->clear();
+            ui->le_mail_mark->clear();
+            ui->le_fcb_mark->clear();
+            ui->le_produit_mark->clear();
+            ui->le_contact_mark->clear();
+}
+
+void gestien::on_mod_mark_clicked()
+{
+    int contact=ui->le_contact_mark->text().toInt();
+    QString nom=ui->le_nom_mark->text();
+    QString mail=ui->le_mail_mark->text();
+    QString fcb=ui->le_fcb_mark->text();
+    QString produit=ui->le_produit_mark->text();
+
+
+    Societe S (nom,mail,fcb,produit,contact);
+
+      bool test=S.modifier(nom);
+
+      if(test)
+      {
+          QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                  notifyIcon->show();
+                  notifyIcon->showMessage("MARKETING ","marketing modifié",QSystemTrayIcon::Information,15000);
+                  srand (time(NULL));
+                  QDate d = QDate::currentDate() ;
+                   QString datee =d.toString("dd / MM / yyyy ") ;
+                   QString fn="modifier" ;
+                  QString nom1 = ui->le_nom_mark->text();
+                projeth pp(nom1,datee,fn) ;
+                bool test1=pp.ajoutehis() ;
+                 ui->tableView_4->setModel(S.afficher());
+                   ui->tab_his_mark->setModel(tmp.afficherhis()) ;
+    }
+
+              ui->le_nom_mark->clear();
+              ui->le_mail_mark->clear();
+              ui->le_fcb_mark->clear();
+              ui->le_produit_mark->clear();
+              ui->le_contact_mark->clear();
+
+
+}
+
+void gestien::on_pdf_mark_clicked()
+{
+    QPdfWriter pdf("C:/Users/MSI/Desktop/projet QT/pdf/anis.pdf");
+                       QPainter painter(&pdf);
+                      int i = 4000;
+                           painter.setPen(Qt::red);
+                           painter.setFont(QFont("Comic Sans MS", 30));
+                           painter.drawText(1100,1100,"Liste Des marketing");
+                           painter.setPen(Qt::blue);
+                           painter.setFont(QFont("Comic Sans MS", 50));
+                           painter.drawRect(100,100,7300,1900);
+                           painter.drawPixmap(QRect(7200,70,2600,2200),QPixmap("C:/Users/MSI/Desktop/projet QT/image/new"));
+                           painter.setPen(Qt::blue);
+
+                           painter.drawRect(0,3000,9600,500);
+                           painter.setPen(Qt::darkGreen);
+
+                           painter.setFont(QFont("Calibri", 15));
+                           painter.drawText(200,3300,"nom");
+                           painter.drawText(1800,3300,"mail");
+                           painter.drawText(3300,3300,"fcb");
+                           painter.drawText(5300,3300,"produit");
+                           painter.drawText(6800,3300,"contact");
+
+
+
+
+                           QSqlQuery query;
+                           query.prepare("select * from MARKETING");
+                           query.exec();
+                           while (query.next())
+                           {
+                               painter.setPen(Qt::blue);
+                               painter.drawText(200,i,query.value(0).toString());
+                               painter.setPen(Qt::black);
+                               painter.drawText(1800,i,query.value(1).toString());
+                               painter.drawText(3300,i,query.value(2).toString());
+                               painter.drawText(5300,i,query.value(3).toString());
+                               painter.drawText(6800,i,query.value(4).toString());
+                               painter.setPen(Qt::red);
+
+                               painter.drawText(8300,i,query.value(5).toString());
+
+
+
+                              i = i + 500;
+                           }
+                           int reponse = QMessageBox::question(this, "Génerer PDF", "PDF Enregistré! -Voulez-Vous Affichez Le PDF ?",QMessageBox::Yes |  QMessageBox::No);
+                               if (reponse == QMessageBox::Yes)
+                               {
+                                   QDesktopServices::openUrl(QUrl::fromLocalFile("C:/Users/MSI/Desktop/projet QT/pdf/anis.pdf"));
+                                   painter.end();
+                               }
+                               if (reponse == QMessageBox::No)
+                               {
+                                    painter.end();
+                               }
+}
+
+void gestien::on_browse_mark_clicked()
+{
+    QString filename = QFileDialog::getOpenFileName(this,"open a file","","video file (*.avi, *.mpg, *.mp4");
+
+    player->setMedia(QUrl::fromLocalFile(filename));
+    player->play();
+}
+
+void gestien::on_tableView_4_clicked(const QModelIndex &index)
+{
+
+    int i;
+i=index.row();
+QModelIndex in=index.sibling(i,0);
+QString val=ui->tableView_4->model()->data(in).toString();
+
+
+    QSqlQuery qry;
+    qry.prepare("select nom,mail,fcb,contact,produit from marketing where nom='"+val+"' " );
+
+
+    if(qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->le_nom_mark->setText(qry.value(0).toString());
+            ui->le_mail_mark->setText(qry.value(1).toString());
+            ui->le_fcb_mark->setText(qry.value(2).toString());
+            ui->le_contact_mark->setText(qry.value(3).toString());
+          ui->le_produit_mark->setText(qry.value(4).toString());
+//
+        }
+}}
+
+
+
+void gestien::on_del_mark_clicked()
+{
+    int i;
+    QModelIndex index=ui->tableView_4->currentIndex();
+i=index.row();
+QModelIndex in=index.sibling(i,0);
+
+QString nom=ui->tableView_4->model()->data(in).toString();
+    bool test=S1.supprimer(nom);
+   // QString nom;
+    if(test)
+    {
+    srand (time(NULL));
+    QDate d = QDate::currentDate() ;
+     QString datee =d.toString("dd / MM / yyyy ") ;
+     QString fn="supprimer" ;
+    QString nom1 = ui->le_nom_mark->text();
+  projeth pp(nom1,datee,fn) ;
+  pp.supprimerhis() ;
+ ui->tableView_4->setModel(S.afficher());
+   ui->tab_his_mark->setModel(tmp.afficherhis()) ;
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                notifyIcon->show();
+                notifyIcon->showMessage("MARKETING ","marketing supprimé",QSystemTrayIcon::Information,15000);
+
+  }
+}
+
+void gestien::on_triemark_clicked()
+{
+    int contact=0;
+    QString nom="";
+    QString fcb="";
+    QString mail="";
+
+    QString produit="";
+
+
+  Societe S(nom,mail,fcb,produit,contact);
+
+
+    QString trieOption=ui->markcombo->currentText();
+     ui->tableView_4->setModel(S.triesociete(trieOption));
+}
+
+void gestien::on_recherchemark_textChanged(const QString &arg1)
+{
+     ui->tableView_4->setModel(S.recherchersocite(arg1));
+}
+
+void gestien::on_parametreee_clicked()
+{
+    ui->parametre->show();
+    ui->pushButton_hide->show();
+
+
+}
+
+
+
+
+void gestien::on_play_2_clicked()
+{
+     mMediaPlayer->play();
+}
+
+void gestien::on_pause_2_clicked()
+{
+     mMediaPlayer->pause();
+}
+
+void gestien::on_stop_2_clicked()
+{
+       mMediaPlayer->stop();
+        mMediaPlayer->play();
+}
+
+void gestien::on_mute_2_clicked()
+{
+    if(ui->mute_2->text()=="mute"){
+    mMediaPlayer->setMuted(true);
+    ui->mute_2->setText("unmute");
+    }else {mMediaPlayer->setMuted(false);
+        ui->mute_2->setText("mute");
+    }
+}
+
+void gestien::on_volume_2_valueChanged(int value)
+{
+    mMediaPlayer->setVolume(value);
+}

@@ -4,7 +4,7 @@
 #include "QString"
 #include "QMessageBox"
 #include "QPixmap"
-
+#include "conncetion.h"
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -25,10 +25,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_pushButton_login_clicked()
 {
+
 //      QString a=ui->lineEdituser->text();
     //  QString  p=ui->label_password->text();
-
-      if(ui->lineEdituser->text()=="admin" && ui->lineEdit_password->text()=="admin")
+    QString login;
+    QString mdp;
+    Connection c;
+    login=ui->lineEdituser->text();
+    mdp=ui->lineEdit_password->text();
+      if(c.Authentification(login,mdp)==1)
       {
         gestien g;
         //this->hide();
@@ -44,4 +49,5 @@ void MainWindow::on_pushButton_login_clicked()
       }
  ui->lineEdit_password->clear();
 }
+
 

@@ -21,3 +21,28 @@ test=true;
 
     return  test;
 }
+
+
+int Connection::Authentification(QString nom,QString pass)
+{
+    QSqlDatabase bd = QSqlDatabase::database();
+
+        QSqlQuery query;
+        QSqlQuery query2;
+
+        query.prepare("SELECT KEYPERSO FROM EMPLOYEE WHERE NOM = \'"+nom+"\' AND PASS =\'"+pass+"\'");
+
+        query.exec();
+
+        if (query.next())
+        {
+             return 1;
+        }
+
+        else {
+            return 0;
+        }
+
+
+
+}

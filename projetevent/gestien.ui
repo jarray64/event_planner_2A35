@@ -178,8 +178,7 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(220, 161, 29);
-background-color: rgb(254, 202, 255);</string>
+    <string notr="true">background-color: rgb(22, 31, 106);</string>
    </property>
    <property name="text">
     <string/>
@@ -352,7 +351,7 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
   <widget class="QPushButton" name="pushButton_hide">
    <property name="geometry">
     <rect>
-     <x>-30</x>
+     <x>0</x>
      <y>0</y>
      <width>1551</width>
      <height>841</height>
@@ -1318,6 +1317,19 @@ font: 12pt &quot;OCR A Extended&quot;;</string>
      <pixmap resource="res.qrc">:/image/image/user.png</pixmap>
     </property>
    </widget>
+   <widget class="QPushButton" name="parametreee">
+    <property name="geometry">
+     <rect>
+      <x>740</x>
+      <y>30</y>
+      <width>93</width>
+      <height>28</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>parametre</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QGroupBox" name="tab_client">
    <property name="geometry">
@@ -2200,8 +2212,9 @@ background-color: rgb(255, 255, 255);
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(220, 161, 29);
+background-color: rgb(175, 207, 255);
 
-background-color: rgb(254, 202, 255);</string>
+</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -2351,7 +2364,447 @@ background-color: rgb(255, 255, 255);</string>
     </widget>
    </widget>
   </widget>
-  <zorder>loginlab</zorder>
+  <widget class="QFrame" name="tabmarketing">
+   <property name="geometry">
+    <rect>
+     <x>210</x>
+     <y>-10</y>
+     <width>1291</width>
+     <height>821</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 170, 0);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QGroupBox" name="groupBox_8">
+    <property name="geometry">
+     <rect>
+      <x>39</x>
+      <y>9</y>
+      <width>351</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(144, 144, 144);</string>
+    </property>
+    <property name="title">
+     <string>ajout</string>
+    </property>
+    <widget class="QPushButton" name="mod_mark">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>180</y>
+       <width>91</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>modifier</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_nom_mark">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>50</y>
+       <width>113</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 170, 0);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>NOM</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_contact_mark">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>250</y>
+       <width>113</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 170, 0);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>contact</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_mail_mark">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>100</y>
+       <width>113</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 170, 0);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>mail</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_produit_mark">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>200</y>
+       <width>113</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 170, 0);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>produit</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="add_mark">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>110</y>
+       <width>93</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">selection-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(255, 255, 255, 255), stop:0.1 rgba(255, 255, 255, 255), stop:0.2 rgba(255, 176, 176, 167), stop:0.3 rgba(255, 151, 151, 92), stop:0.4 rgba(255, 125, 125, 51), stop:0.5 rgba(255, 76, 76, 205), stop:0.52 rgba(255, 76, 76, 205), stop:0.6 rgba(255, 180, 180, 84), stop:1 rgba(255, 255, 255, 0));</string>
+     </property>
+     <property name="text">
+      <string>ajouter</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="le_fcb_mark">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>150</y>
+       <width>113</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 170, 0);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="placeholderText">
+      <string>facebook</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_9">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>20</y>
+      <width>731</width>
+      <height>381</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(176, 176, 176);</string>
+    </property>
+    <property name="title">
+     <string>aff</string>
+    </property>
+    <widget class="QPushButton" name="browse_mark">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>330</y>
+       <width>111</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>browse video</string>
+     </property>
+     <property name="shortcut">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pdf_mark">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>330</y>
+       <width>71</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>pdf</string>
+     </property>
+    </widget>
+    <widget class="QTableView" name="tableView_4">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>70</y>
+       <width>661</width>
+       <height>241</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+color: rgb(255, 170, 0);
+background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="del_mark">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>330</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <property name="text">
+      <string>supprimer</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="recherchemark">
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>30</y>
+       <width>201</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="placeholderText">
+      <string>recherche</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="markcombo">
+     <property name="geometry">
+      <rect>
+       <x>252</x>
+       <y>30</y>
+       <width>91</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="triemark">
+     <property name="geometry">
+      <rect>
+       <x>350</x>
+       <y>30</y>
+       <width>81</width>
+       <height>28</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>trie</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QGroupBox" name="groupBox_10">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>420</y>
+      <width>741</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(157, 157, 157);</string>
+    </property>
+    <property name="title">
+     <string>histo</string>
+    </property>
+    <widget class="QTableView" name="tab_his_mark">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>10</y>
+       <width>641</width>
+       <height>301</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 170, 0);
+border-radius:30px;
+background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QFrame" name="parametre">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>250</y>
+     <width>921</width>
+     <height>421</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 115, 148);</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::StyledPanel</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <widget class="QWidget" name="layoutWidget_5">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>170</y>
+      <width>321</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QPushButton" name="mute_2">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:orange;
+color: rgb(255, 255, 255);
+border-radius:5px;</string>
+       </property>
+       <property name="text">
+        <string>Mute</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="volume_2">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_6">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>120</y>
+      <width>431</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_5">
+     <item>
+      <widget class="QPushButton" name="play_2">
+       <property name="styleSheet">
+        <string notr="true">background-color:orange;
+color: rgb(255, 255, 255);
+border-radius:5px;</string>
+       </property>
+       <property name="text">
+        <string>Play</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pause_2">
+       <property name="styleSheet">
+        <string notr="true">background-color:orange;
+color: rgb(255, 255, 255);
+border-radius:5px;</string>
+       </property>
+       <property name="text">
+        <string>Pause</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="stop_2">
+       <property name="styleSheet">
+        <string notr="true">background-color:orange;
+color: rgb(255, 255, 255);
+border-radius:5px;</string>
+       </property>
+       <property name="text">
+        <string>restart</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_20">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>170</y>
+      <width>91</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Tekton Pro</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 170, 0);
+background-color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>music :</string>
+    </property>
+   </widget>
+  </widget>
+  <zorder>WebBrowser</zorder>
   <zorder>label_2</zorder>
   <zorder>pushButton_ev</zorder>
   <zorder>pushButton_mrk</zorder>
@@ -2371,7 +2824,9 @@ background-color: rgb(255, 255, 255);</string>
   <zorder>tabpartenaire</zorder>
   <zorder>label_done</zorder>
   <zorder>label_wrong</zorder>
-  <zorder>WebBrowser</zorder>
+  <zorder>tabmarketing</zorder>
+  <zorder>loginlab</zorder>
+  <zorder>parametre</zorder>
  </widget>
  <customwidgets>
   <customwidget>
