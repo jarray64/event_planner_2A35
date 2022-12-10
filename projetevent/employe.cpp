@@ -45,50 +45,27 @@ pass="";
 bool Employe::ajouter()
  {
 
-
+    QString res=QString::number(keyperso);
+QString res1=QString::number(age);
      QSqlQuery query;
-          query.prepare("INSERT INTO EMPLOYEE (nom, keyperso, prenom,pass,age) "
-                        "VALUES (:nom, :keyperso, :prenom,:pass,:age)");
+          query.prepare("INSERT INTO EMPLOYEE (keyperso,nom,prenom,pass,age) "
+                        "VALUES (:keyperso,:nom,:prenom,:pass,:age)");
           query.bindValue(":nom", nom);
-          query.bindValue(":keyperso", keyperso);
+          query.bindValue(":keyperso", res);
           query.bindValue(":prenom", prenom);
           query.bindValue(":pass", pass);
-          query.bindValue(":age", age);
+          query.bindValue(":age", res1);
 
         return  query.exec();
 
 
  }
-QSqlQueryModel * Employe ::afficher(int a,int b)
+QSqlQueryModel * Employe ::afficher()
 {
 
     QSqlQueryModel * model= new QSqlQueryModel();
 
-
-
-    if(a==0){
-        if(b==1)
-    model->setQuery("select * FROM EMPLOYEE ORDER BY keyperso ");
-        else
-                model->setQuery("select * FROM EMPLOYEE ORDER BY keyperso DESC");
-    }else if(a==1){
-                if(b==1)
-    model->setQuery("select * FROM EMPLOYEE ORDER BY nom");
-                else
-                        model->setQuery("select * FROM EMPLOYEE ORDER BY nom DESC");
-    }else if(a==-1){
     model->setQuery("select * FROM EMPLOYEE ");
-
-    }
-
-    else {
-                   if(b==1)
-     model->setQuery("select * FROM EMPLOYEE ORDER BY age ");   else
-
-     model->setQuery("select * FROM EMPLOYEE ORDER BY age DESC");
-           }
-
-
     model->setHeaderData(0, Qt::Horizontal, QObject::tr("NOM"));
     model->setHeaderData(1, Qt::Horizontal, QObject::tr("KEYPERSO "));
     model->setHeaderData(2, Qt::Horizontal, QObject::tr("PRENOM "));
@@ -102,42 +79,6 @@ QSqlQueryModel * Employe ::afficher(int a,int b)
 }
 
 
-Employe Employe::chercher(int keyperso){
-
-    Employe e1;
-
-         QSqlQuery checkQuery;
-
-checkQuery.prepare("select * from EMPLOYEE where keyperso=:keyperso ");
-
-checkQuery.bindValue(":keyperso",keyperso);
-
-         if (checkQuery.exec())
-         {
-             if (checkQuery.next())
-             {
-            e1.set_nom(checkQuery.value(0).toString() );
-
-                  e1.set_keyperso(checkQuery.value(1).toInt() );
-
-                  e1.set_prenom(checkQuery.value(2).toString() );
-          e1.set_pass(checkQuery.value(3).toString() );
-                  e1.set_age(checkQuery.value(4).toInt() );
-
-   qDebug() << "User   found:" << checkQuery.lastError();
-     }   else
-             {
-                 qDebug() << "User not found:" << checkQuery.lastError();
-             e1.set_nom("user not found");
-             }
-         }
-
-
-
-
- return e1;
-     }
-
  bool Employe::supprimer(int keyperso)
  {
      QSqlQuery query;
@@ -145,59 +86,38 @@ checkQuery.bindValue(":keyperso",keyperso);
      query.bindValue(":keyperso", keyperso);
   return   query.exec();
 }
- bool Employe::modifier(int keyperso,QString nom,QString prenom,QString pass,int age)
+ bool Employe::modifier(int keyperso)
  {
+     QString res=QString::number(keyperso);
+QString res1=QString::number(age);
      QSqlQuery query;
      query.prepare("update  EMPLOYEE set  nom=:nom, age=:age,prenom=:prenom ,pass=:pass where keyperso=:keyperso " );
-     query.bindValue(":keyperso", keyperso);
+     query.bindValue(":keyperso", res);
      query.bindValue(":nom", nom);
      query.bindValue(":prenom", prenom);
      query.bindValue(":pass", pass);
-     query.bindValue(":age", age);
+     query.bindValue(":age", res1);
 
    return  query.exec();
  }
 
- bool Employe::persoExists( int keyperso){
-     bool exists = false;
-
-     QSqlQuery checkQuery;
-     checkQuery.prepare("SELECT * FROM EMPLOYEE WHERE KEYPERSO=:KEYPERSO");
-     checkQuery.bindValue(":KEYPERSO", keyperso);
-
-     if (checkQuery.exec())
-     {
-         if (checkQuery.next())
-         {
-             exists = true;
-         }
-     }
-     else
-     {
-         qDebug() << "User not found:" << checkQuery.lastError();
-     }
-
-     return exists;
 
 
-
-
-};
 
 QSqlQueryModel* Employe::rechercheemp  (QString recherche)
 {
      QSqlQueryModel * model= new QSqlQueryModel();
- model->setQuery("SELECT * FROM EMPLOYEE WHERE KEYPERSO LIKE '"+recherche+"%' OR age LIKE '"+recherche+"%' OR NOM LIKE '"+recherche+"%'");
+ model->setQuery("SELECT * FROM EMPLOYEE WHERE KEYPERSO LIKE '"+recherche+"%' OR age LIKE '"+recherche+"%' OR NOM LIKE '"+recherche+"%' OR PRENOM LIKE '"+recherche+"%'");
  model->setHeaderData(0, Qt::Horizontal, QObject::tr("KEYPERSONOM"));
  model->setHeaderData(1, Qt::Horizontal, QObject::tr("NOM"));
  model->setHeaderData(2, Qt::Horizontal, QObject::tr("PRENOM"));
  model->setHeaderData(3, Qt::Horizontal, QObject::tr("PASS"));
- model->setHeaderData(3, Qt::Horizontal, QObject::tr("age"));
+ model->setHeaderData(4, Qt::Horizontal, QObject::tr("age"));
  return model;
  }
 
  void  Employe::genererPDF(){
-     QPdfWriter pdf("C:\\Users\\EYA\\Downloads\\employes.pdf");
+     QPdfWriter pdf("C:/Users/pc/Desktop/evant_planner2A35/projetevent/Pdf/employes.pdf");
      QPainter painter(&pdf);
     int i = 4000;
          painter.setPen(Qt::black);
@@ -238,11 +158,29 @@ QSqlQueryModel* Employe::rechercheemp  (QString recherche)
 
  }
 
- QSqlQueryModel*  Employe::tri(QString colone, QString ordre)
- {
- QSqlQueryModel* model=new QSqlQueryModel();
- model->setQuery("select * from EMPLOYEE order by "+colone+" "+ordre+"");
- return model;
- }
 
+ QSqlQueryModel * Employe::trieremp(QString test)
+ {
+     QSqlQueryModel * model=new QSqlQueryModel();
+     if(test == "par défaut"){
+         model->setQuery("SELECT * from employee");
+     }
+     else if(test =="nom")
+     {
+         model->setQuery("SELECT * from employee order by nom asc ");
+     }
+     else if(test =="prenom")
+     {
+         model->setQuery("SELECT * from employee order by prenom desc ");
+     }
+     else if(test =="cin")
+     {
+         model->setQuery("SELECT * from employee order by keyperso asc ");
+     }
+     else if(test =="age")
+     {
+         model->setQuery("SELECT * from employee order by age asc ");
+     }
+     return model;
+ }
 

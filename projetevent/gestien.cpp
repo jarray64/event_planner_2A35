@@ -51,6 +51,7 @@
 #include "QGraphicsItem"
 #include "QGraphicsView"
 #include "QGraphicsVideoItem"
+#include "employe.h"
  notification N;
  QString test,test1;
  int occ=0;
@@ -164,6 +165,7 @@ notification();
     ui->mailframe->hide();
     ui->tabmarketing->hide();
      ui->parametre->hide();
+     ui->empframe->hide();
     QWidget::setWindowTitle("E-event");
     QWidget::setWindowOpacity(50);
 
@@ -436,7 +438,70 @@ int cinclient=0;
                  ui->markcombo->addItem("mail");
                  ui->markcombo->addItem("facebook");
                  ui->markcombo->addItem("contact");
+                 //****************************************************************************************************************************
+                  ui->tableView_5->setModel(emp.afficher());
+                  ui->empcombo->addItem("par défaut");
+                  ui->empcombo->addItem("cin");
+                  ui->empcombo->addItem("nom");
+                  ui->empcombo->addItem("prenom");
+                  ui->empcombo->addItem("age");
+                  QSqlQueryModel * model4= new QSqlQueryModel();
+                                   model4->setQuery("select * from employee where AGE < 18 ");
+                                   float code=model4->rowCount();
+                                   model4->setQuery("select * from employee where AGE  between 18 and 50 ");
+                                   float codee=model4->rowCount();
+                                   model4->setQuery("select * from employee where AGE >50 ");
+                                   float codeee=model4->rowCount();
 
+                                   QString aa=QString("moins de 18 \t"+QString::number((code*100)/total,'f',2)+"%" );
+                                   QString bb=QString("entre 18 et 50 \t"+QString::number((codee*100)/total,'f',2)+"%" );
+                                   QString ccc=QString("+50 \t"+QString::number((codeee*100)/total,'f',2)+"%" );
+                                   QPieSeries *series4 = new QPieSeries();
+                                   series4->append(aa,code);
+                                   series4->append(bb,codee);
+                                   series4->append(ccc,codeee);
+                           if (code!=0)
+                           {QPieSlice *slice4 = series4->slices().at(0);
+                            slice4->setLabelVisible();
+                            slice4->setPen(QPen());}
+                           if ( codee!=0)
+                           {
+                                    // Add label, explode and define brush for 2nd slice
+                                    QPieSlice *slice5 = series4->slices().at(1);
+                                    //slice1->setExploded();
+                                    slice5->setLabelVisible();
+                           }
+                           if(codeee!=0)
+                           {
+                                    // Add labels to rest of slices
+                                    QPieSlice *slice6 = series4->slices().at(2);
+                                    //slice1->setExploded();
+                                    slice6->setLabelVisible();
+                           }
+
+                                   QChart *chart4 = new QChart();
+
+                                       chart4->addSeries(series4);
+                                       chart4->setTitle("");
+                                      chart4->setBackgroundVisible(false);
+
+
+
+                                   chart4->setVisible(true);
+                                   chart4->legend()->setAlignment(Qt::AlignBottom);
+
+
+                                   QChartView *chartView4 = new QChartView(chart4);
+
+                                   chartView4->setRenderHint(QPainter::Antialiasing);
+                                   QPalette pal3 = qApp->palette();
+
+                                   chartView4->setMaximumWidth(731);
+                                   chartView4->setMaximumHeight(381);
+                                   chartView4->setMinimumWidth(731);
+                                   chartView4->setMinimumHeight(381);
+                                   chartView4->setParent(ui->statemp);
+                                   chartView4->show();
 
 
 }
@@ -513,6 +578,7 @@ void gestien::on_pushButton_lab_clicked()
 ui->tabpartenaire->hide();
  ui->mailframe->hide();
  ui->tabmarketing->hide();
+ ui->empframe->hide();
 
 
 
@@ -549,6 +615,7 @@ void gestien::on_pushButton_ev_clicked()
 ui->tabpartenaire->hide();
  ui->mailframe->hide();
  ui->tabmarketing->hide();
+ ui->empframe->hide();
 
 
 }
@@ -584,6 +651,7 @@ void gestien::on_pushButton_prt_clicked()
 ui->tabpartenaire->show();
  ui->mailframe->hide();
   ui->tabmarketing->hide();
+  ui->empframe->hide();
 
 }
 
@@ -619,6 +687,7 @@ void gestien::on_pushButton_mrk_clicked()
 ui->tabpartenaire->hide();
  ui->mailframe->hide();
   ui->tabmarketing->show();
+  ui->empframe->hide();
 
 }
 
@@ -654,6 +723,7 @@ void gestien::on_pushButton_emp_clicked()
 ui->tabpartenaire->hide();
  ui->mailframe->hide();
  ui->tabmarketing->hide();
+ ui->empframe->show();
 
 }
 
@@ -689,6 +759,7 @@ ui->tabpartenaire->hide();
  ui->mailframe->hide();
 
  ui->tabmarketing->hide();
+ ui->empframe->hide();
 
 }
 
@@ -1218,7 +1289,7 @@ void gestien::on_pushButton_3_clicked()
      }
 }
 
-void gestien::on_rechercherClient_textChanged(const QString &arg1)
+void gestien::on_rechercherClient_textChanged()
 {
     QString chaine_c=ui->rechercherClient->text();
 
@@ -1693,7 +1764,7 @@ void gestien::on_statistique_clicked()
 }
 
 
-void gestien::smscheck()
+/*void gestien::smscheck()
 {
 
 QSqlQuery q;
@@ -1717,8 +1788,8 @@ if (test[0]!="�"&& test[0]!="+"&& test!=""&& occ==0)
 }
 
 }
-
-void gestien::on_pushButton_clicked()
+*/
+/*void gestien::on_pushButton_clicked()
 {
 
 
@@ -1746,7 +1817,7 @@ A.write_to_arduino("a");
 
 
 
- }
+ }*/
 
 void gestien::on_add_mark_clicked()
 {
@@ -1774,7 +1845,7 @@ void gestien::on_add_mark_clicked()
                  QString fn="ajouter" ;
                 QString nom1 = ui->le_nom_mark->text();
               projeth pp(nom1,datee,fn) ;
-              bool test1=pp.ajoutehis() ;
+             pp.ajoutehis() ;
                ui->tab_his_mark->setModel(tmp.afficherhis()) ;
   }
   else
@@ -1814,7 +1885,7 @@ void gestien::on_mod_mark_clicked()
                    QString fn="modifier" ;
                   QString nom1 = ui->le_nom_mark->text();
                 projeth pp(nom1,datee,fn) ;
-                bool test1=pp.ajoutehis() ;
+                pp.ajoutehis() ;
                  ui->tableView_4->setModel(S.afficher());
                    ui->tab_his_mark->setModel(tmp.afficherhis()) ;
     }
@@ -2013,4 +2084,221 @@ void gestien::on_mute_2_clicked()
 void gestien::on_volume_2_valueChanged(int value)
 {
     mMediaPlayer->setVolume(value);
+}
+
+void gestien::on_tableView_5_clicked(const QModelIndex &index)
+{
+
+    int i;
+i=index.row();
+QModelIndex in=index.sibling(i,0);
+QString val=ui->tableView_5->model()->data(in).toString();
+
+
+    QSqlQuery qry;
+    qry.prepare("select keyperso,nom,prenom,age,pass from employee where keyperso='"+val+"' " );
+
+
+    if(qry.exec())
+    {
+        while(qry.next())
+        {
+            ui->keyperso_ajout->setText(qry.value(0).toString());
+            ui->nom_ajout->setText(qry.value(1).toString());
+            ui->prenom_ajout->setText(qry.value(2).toString());
+            ui->age_ajout->setText(qry.value(3).toString());
+          ui->pass_ajout->setText(qry.value(4).toString());
+//
+        }
+}}
+
+void gestien::on_pb_ajouter_3_clicked()
+{
+
+
+    int key=ui->keyperso_ajout->text().toInt();
+    QString nom=ui->nom_ajout->text();
+    QString prenom=ui->prenom_ajout->text();
+    QString pass=ui->pass_ajout->text();
+    int age=ui->pass_ajout->text().toInt();
+
+
+   Employe E( nom, key, prenom, pass, age);
+
+    bool test=E.ajouter();
+    if(test)
+    {
+         ui->tableView_5->setModel(E.afficher());
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                notifyIcon->show();
+                notifyIcon->showMessage("employee ","employee ajouté",QSystemTrayIcon::Information,15000);
+                srand (time(NULL));
+
+  }
+  else
+    {
+              QSystemTrayIcon *notifyIcon= new QSystemTrayIcon;
+                            notifyIcon->show();
+        notifyIcon->showMessage("employee ","employee non ajouté",QSystemTrayIcon::Information,15000);
+    }
+            ui->keyperso_ajout->clear();
+            ui->nom_ajout->clear();
+            ui->prenom_ajout->clear();
+            ui->pass_ajout->clear();
+            ui->age_ajout->clear();
+}
+
+
+void gestien::on_supprimer_keyperso_btn_clicked()
+{
+
+    int i;
+    QModelIndex index=ui->tableView_5->currentIndex();
+i=index.row();
+QModelIndex in=index.sibling(i,0);
+
+int key=ui->tableView_5->model()->data(in).toInt();
+    bool test=emp.supprimer(key);
+
+    if(test)
+    {
+    srand (time(NULL));
+
+ ui->tableView_5->setModel(emp.afficher());
+        QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                notifyIcon->show();
+                notifyIcon->showMessage("employee ","employee supprimé",QSystemTrayIcon::Information,15000);
+
+  }
+}
+
+void gestien::on_pb_modifier_7_clicked()
+{
+    int key=ui->keyperso_ajout->text().toInt();
+    QString nom=ui->nom_ajout->text();
+    QString prenom=ui->prenom_ajout->text();
+    QString pass=ui->pass_ajout->text();
+    int age=ui->age_ajout->text().toInt();
+
+
+   Employe E( nom, key, prenom, pass, age);
+
+      bool test=E.modifier(key);
+
+      if(test)
+      {
+          QSystemTrayIcon *notifyIcon = new QSystemTrayIcon;
+                  notifyIcon->show();
+                  notifyIcon->showMessage("empolyee ","employee modifié",QSystemTrayIcon::Information,15000);
+                  srand (time(NULL));
+
+                 ui->tableView_5->setModel(emp.afficher());
+    }
+
+              ui->keyperso_ajout->clear();
+              ui->nom_ajout->clear();
+              ui->prenom_ajout->clear();
+              ui->age_ajout->clear();
+              ui->pass_ajout->clear();
+
+
+}
+
+void gestien::on_trieemp_clicked()
+{
+    int key=0;
+    QString nom="";
+    QString prenom="";
+    QString pass="";
+
+    QString produit="";
+int age=0;
+
+
+Employe E( nom, key, prenom, pass, age);
+
+
+    QString trieOption=ui->empcombo->currentText();
+     ui->tableView_5->setModel(E.trieremp(trieOption));
+}
+
+void gestien::on_recherceremp_textChanged(const QString &arg1)
+{
+      ui->tableView_5->setModel(emp.rechercheemp(arg1));
+}
+
+void gestien::on_pushButton_8_clicked()
+{
+     emp.genererPDF();
+}
+
+void gestien::on_pushButton_9_clicked()
+{
+    QSqlQueryModel * model= new QSqlQueryModel();
+                     model->setQuery("select * from employee where AGE < 18 ");
+                     float code=model->rowCount();
+                     model->setQuery("select * from employee where AGE  between 18 and 50 ");
+                     float codee=model->rowCount();
+                     model->setQuery("select * from employee where AGE >50 ");
+                     float codeee=model->rowCount();
+                     float total=code+codee+codeee;
+                     QString a=QString("moins de 18 \t"+QString::number((code*100)/total,'f',2)+"%" );
+                     QString b=QString("entre 18 et 50 \t"+QString::number((codee*100)/total,'f',2)+"%" );
+                     QString c=QString("+50 \t"+QString::number((codeee*100)/total,'f',2)+"%" );
+                     QPieSeries *series4 = new QPieSeries();
+                     series4->append(a,code);
+                     series4->append(b,codee);
+                     series4->append(c,codeee);
+             if (code!=0)
+             {QPieSlice *slice4 = series4->slices().at(0);
+              slice4->setLabelVisible();
+              slice4->setPen(QPen());}
+             if ( codee!=0)
+             {
+                      // Add label, explode and define brush for 2nd slice
+                      QPieSlice *slice5 = series4->slices().at(1);
+                      //slice1->setExploded();
+                      slice5->setLabelVisible();
+             }
+             if(codeee!=0)
+             {
+                      // Add labels to rest of slices
+                      QPieSlice *slice6 = series4->slices().at(2);
+                      //slice1->setExploded();
+                      slice6->setLabelVisible();
+             }
+
+                     QChart *chart4 = new QChart();
+
+                         chart4->addSeries(series4);
+                         chart4->setTitle("");
+                        chart4->setBackgroundVisible(false);
+
+
+
+                     chart4->setVisible(true);
+                     chart4->legend()->setAlignment(Qt::AlignBottom);
+
+
+                     QChartView *chartView4 = new QChartView(chart4);
+
+                     chartView4->setRenderHint(QPainter::Antialiasing);
+                     QPalette pal2 = qApp->palette();
+
+                     chartView4->setMaximumWidth(731);
+                     chartView4->setMaximumHeight(381);
+                     chartView4->setMinimumWidth(731);
+                     chartView4->setMinimumHeight(381);
+                     chartView4->setParent(ui->statemp);
+                     chartView4->show();
+
+}
+
+
+void gestien::on_pushButton_10_clicked()
+{
+    QPrinter  printer;
+        printer.setPrinterName("test");
+        QPrintDialog dialog(&printer,this);
+        if (dialog.exec()==QDialog::Rejected) return;
 }

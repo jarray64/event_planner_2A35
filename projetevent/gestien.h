@@ -30,6 +30,7 @@
  #include <QPieSlice>
 #include <QPieSeries>
 #include <QtCharts>
+#include "employe.h"
 namespace Ui {
 class gestien;
 }
@@ -43,7 +44,7 @@ public:
     ~gestien();
 
 private slots:
-   void smscheck();
+//   void smscheck();
 
 
 
@@ -113,7 +114,7 @@ private slots:
 
      void on_pushButton_3_clicked();
 
-     void on_rechercherClient_textChanged(const QString &arg1);
+     void on_rechercherClient_textChanged();
 
      void on_trierClientBtn_clicked();
 
@@ -125,7 +126,7 @@ private slots:
 
      void on_tableView_2_clicked(const QModelIndex &index);
 
-     void on_pushButton_clicked();
+    // void on_pushButton_clicked();
 
 
 
@@ -189,6 +190,24 @@ private slots:
 
      void on_volume_2_valueChanged(int value);
 
+     void on_tableView_5_clicked(const QModelIndex &index);
+
+     void on_pb_ajouter_3_clicked();
+
+     void on_supprimer_keyperso_btn_clicked();
+
+     void on_pb_modifier_7_clicked();
+
+     void on_trieemp_clicked();
+
+     void on_recherceremp_textChanged(const QString &arg1);
+
+     void on_pushButton_8_clicked();
+
+     void on_pushButton_9_clicked();
+
+     void on_pushButton_10_clicked();
+
 private:
     Ui::gestien *ui;
     evenement etmp;
@@ -208,6 +227,7 @@ QVideoWidget* vw;//pub
 QMediaPlayer * mMediaPlayer;
 QTranslator *translator=new QTranslator;
 projeth tmp;
+Employe emp;
 
 };
 

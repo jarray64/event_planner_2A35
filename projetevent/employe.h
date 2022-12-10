@@ -25,14 +25,8 @@ public:
 
 
 
-    bool supprimer(int);
-    bool modifier(int,QString,QString,QString,int);
-
-    QSqlQueryModel* tri(QString,QString);
-    QSqlQueryModel * rechercheemp(QString);
-void genererPDF();
 //new
-QSqlQueryModel* afficher( int a,int);
+
 Employe();
 Employe(QString nom,int keyperso,QString prenom,QString pass,int age);
 int get_keyperso();
@@ -46,6 +40,13 @@ void set_nom(QString);
 void set_prenom(QString);
 void set_age(int);
   bool ajouter();
+  QSqlQueryModel* afficher();
+  bool supprimer(int);
+  bool modifier(int);
+
+ QSqlQueryModel *trieremp(QString);
+  QSqlQueryModel * rechercheemp(QString);
+void genererPDF();
   Employe chercher(int keyperso);
   bool persoExists(  int keyperso);
 //
