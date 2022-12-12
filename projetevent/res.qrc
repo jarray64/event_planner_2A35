@@ -36,8 +36,15 @@
         <file>image/icons8-play-50.png</file>
         <file>image/icons8-replay-30-24.png</file>
         <file>image/cancel.png</file>
+        <file>image/icons8-client-management-50.png</file>
+        <file>image/icons8-event-accepted-tentatively-50.png</file>
+        <file>image/icons8-handshake-30.png</file>
+        <file>image/icons8-home-page-30.png</file>
+        <file>image/icons8-lawyer-50.png</file>
+        <file>image/icons8-sponsorship-broker-78.png</file>
     </qresource>
     <qresource prefix="/new/traduction">
         <file>anglais.qm</file>
     </qresource>
+    <qresource prefix="/new/music"/>
 </RCC>

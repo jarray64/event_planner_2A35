@@ -26,9 +26,9 @@
   <widget class="QPushButton" name="pushButton_ev">
    <property name="geometry">
     <rect>
-     <x>50</x>
+     <x>-10</x>
      <y>160</y>
-     <width>151</width>
+     <width>211</width>
      <height>31</height>
     </rect>
    </property>
@@ -52,13 +52,23 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
    <property name="text">
     <string>evenements</string>
    </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/image/image/icons8-event-accepted-tentatively-50.png</normaloff>:/image/image/icons8-event-accepted-tentatively-50.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton_mrk">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>-10</x>
      <y>270</y>
-     <width>151</width>
+     <width>201</width>
      <height>41</height>
     </rect>
    </property>
@@ -82,13 +92,23 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
    <property name="text">
     <string>marketing</string>
    </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/image/image/icons8-sponsorship-broker-78.png</normaloff>:/image/image/icons8-sponsorship-broker-78.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>50</width>
+     <height>50</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton_prt">
    <property name="geometry">
     <rect>
-     <x>40</x>
+     <x>-10</x>
      <y>220</y>
-     <width>161</width>
+     <width>211</width>
      <height>27</height>
     </rect>
    </property>
@@ -110,13 +130,23 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
 </string>
    </property>
    <property name="text">
-    <string>partenaires</string>
+    <string>  partenaires</string>
+   </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/image/image/icons8-handshake-30.png</normaloff>:/image/image/icons8-handshake-30.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>35</width>
+     <height>35</height>
+    </size>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_emp">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>-10</x>
      <y>340</y>
      <width>181</width>
      <height>31</height>
@@ -141,11 +171,21 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
    <property name="text">
     <string>employés</string>
    </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/image/image/icons8-lawyer-50.png</normaloff>:/image/image/icons8-lawyer-50.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
   </widget>
   <widget class="QPushButton" name="pushButton_cl">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>-20</x>
      <y>400</y>
      <width>171</width>
      <height>27</height>
@@ -170,6 +210,16 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
    <property name="text">
     <string>clients</string>
    </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/image/image/icons8-client-management-50.png</normaloff>:/image/image/icons8-client-management-50.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
+   </property>
   </widget>
   <widget class="QLabel" name="label_2">
    <property name="geometry">
@@ -190,7 +240,7 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
   <widget class="QPushButton" name="pushButton_lab">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>-20</x>
      <y>100</y>
      <width>171</width>
      <height>31</height>
@@ -215,6 +265,16 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
    </property>
    <property name="text">
     <string>Label</string>
+   </property>
+   <property name="icon">
+    <iconset resource="res.qrc">
+     <normaloff>:/image/image/icons8-home-page-30.png</normaloff>:/image/image/icons8-home-page-30.png</iconset>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>30</width>
+     <height>30</height>
+    </size>
    </property>
   </widget>
   <widget class="QLabel" name="label_cl">
@@ -354,10 +414,10 @@ font: 87 15pt &quot;Segoe UI Black&quot;;
   <widget class="QPushButton" name="pushButton_hide">
    <property name="geometry">
     <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>1551</width>
-     <height>841</height>
+     <x>-30</x>
+     <y>-20</y>
+     <width>1581</width>
+     <height>851</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -367,16 +427,16 @@ background-color: rgb(131, 131, 131,30%);
 </string>
    </property>
    <property name="text">
-    <string>                                                                                                                                                                                                                                                                                                                                        </string>
+    <string/>
    </property>
    <property name="icon">
     <iconset resource="res.qrc">
-     <normaloff>:/image/image/cancel.png</normaloff>:/image/image/cancel.png</iconset>
+     <normaloff>:/image/image/icons8-client-management-50.png</normaloff>:/image/image/icons8-client-management-50.png</iconset>
    </property>
    <property name="iconSize">
     <size>
-     <width>100</width>
-     <height>100</height>
+     <width>30</width>
+     <height>30</height>
     </size>
    </property>
   </widget>
@@ -4441,16 +4501,16 @@ background-color:#FF7244;
   <zorder>label_emp</zorder>
   <zorder>label_mrk</zorder>
   <zorder>label_lab</zorder>
-  <zorder>loginlab</zorder>
   <zorder>pushButton_hide</zorder>
-  <zorder>label_done</zorder>
-  <zorder>label_wrong</zorder>
-  <zorder>WebBrowser</zorder>
   <zorder>eventlab</zorder>
   <zorder>tab_client</zorder>
   <zorder>tabmarketing</zorder>
   <zorder>tabpartenaire</zorder>
   <zorder>empframe</zorder>
+  <zorder>loginlab</zorder>
+  <zorder>label_wrong</zorder>
+  <zorder>label_done</zorder>
+  <zorder>WebBrowser</zorder>
  </widget>
  <customwidgets>
   <customwidget>

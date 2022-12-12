@@ -66,7 +66,7 @@ gestien::gestien(QWidget *parent) :
     ui(new Ui::gestien)
 {
 mMediaPlayer = new QMediaPlayer(this);
-    mMediaPlayer->setMedia(QUrl::fromLocalFile("C:/Users/pc/Desktop/evant_planner2A35/projetevent/media/12.WAV"));
+    mMediaPlayer->setMedia(QUrl::fromLocalFile("C:/Users/pc/Desktop/evant_planner2A35/projetevent/media/12.wav"));
     mMediaPlayer->setVolume(20);
         mMediaPlayer->play();
 
