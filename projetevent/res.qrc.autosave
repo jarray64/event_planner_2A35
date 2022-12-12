@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>image/background_login.png</file>
+        <file>image/login.png</file>
+        <file>image/label.png</file>
+        <file>image/logo.png</file>
+        <file>image/done.png</file>
+        <file>image/wrong.png</file>
+        <file>image/search.png</file>
+        <file>image/logout.png</file>
+        <file>image/user.png</file>
+        <file>image/upload.png</file>
+        <file>image/email.png</file>
+        <file>image/pdf.png</file>
+        <file>image/phone-call.png</file>
+        <file>image/refresh.png</file>
+        <file>image/sort.png</file>
+        <file>image/pdf2.png</file>
+    </qresource>
+    <qresource prefix="/new/traduction">
+        <file>anglais.qm</file>
+    </qresource>
+</RCC>

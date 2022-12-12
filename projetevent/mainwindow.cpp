@@ -32,6 +32,7 @@ void MainWindow::on_pushButton_login_clicked()
     QString mdp;
     Connection c;
     login=ui->lineEdituser->text();
+    userlog=login;
     mdp=ui->lineEdit_password->text();
       if(c.Authentification(login,mdp)==1)
       {

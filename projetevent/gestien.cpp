@@ -1,5 +1,7 @@
  #include "gestien.h"
 #include "ui_gestien.h"
+#include "ui_mainwindow.h"
+
 #include "evenement.h"
 #include "QMessageBox"
 #include "QPixmap"
@@ -55,6 +57,7 @@
  notification N;
  QString test,test1;
  int occ=0;
+ int vl=0;
 QVideoWidget * videoWidget;
 
 
@@ -139,6 +142,102 @@ notification();
                                             effect4->setXOffset(2);
                                             effect4->setYOffset(2);
                                             effect4->setColor(Qt::red);
+                                            QGraphicsDropShadowEffect *effect6 = new QGraphicsDropShadowEffect;
+                                                effect6->setBlurRadius(20);
+                                                effect6->setXOffset(2);
+                                                effect6->setYOffset(2);
+                                                effect6->setColor(Qt::lightGray);
+                                                QGraphicsDropShadowEffect *effect7 = new QGraphicsDropShadowEffect;
+                                                    effect7->setBlurRadius(20);
+                                                    effect7->setXOffset(2);
+                                                    effect7->setYOffset(2);
+                                                    effect7->setColor(Qt::lightGray);
+                                                    QGraphicsDropShadowEffect *effect8 = new QGraphicsDropShadowEffect;
+                                                        effect8->setBlurRadius(20);
+                                                        effect8->setXOffset(2);
+                                                        effect8->setYOffset(2);
+                                                        effect8->setColor(Qt::lightGray);
+                                                        QGraphicsDropShadowEffect *effect9 = new QGraphicsDropShadowEffect;
+                                                            effect9->setBlurRadius(20);
+                                                            effect9->setXOffset(2);
+                                                            effect9->setYOffset(2);
+                                                            effect9->setColor(Qt::lightGray);
+                                                            QGraphicsDropShadowEffect *effect10 = new QGraphicsDropShadowEffect;
+                                                                effect10->setBlurRadius(20);
+                                                                effect10->setXOffset(2);
+                                                                effect10->setYOffset(2);
+                                                                effect10->setColor(Qt::lightGray);
+                                                                QGraphicsDropShadowEffect *effect11 = new QGraphicsDropShadowEffect;
+                                                                    effect11->setBlurRadius(20);
+                                                                    effect11->setXOffset(2);
+                                                                    effect11->setYOffset(2);
+                                                                    effect11->setColor(Qt::lightGray);
+                                                                    QGraphicsDropShadowEffect *effect12 = new QGraphicsDropShadowEffect;
+                                                                        effect12->setBlurRadius(20);
+                                                                        effect12->setXOffset(2);
+                                                                        effect12->setYOffset(2);
+                                                                        effect12->setColor(Qt::lightGray);
+                                                                        QGraphicsDropShadowEffect *effect13 = new QGraphicsDropShadowEffect;
+                                                                            effect13->setBlurRadius(20);
+                                                                            effect13->setXOffset(2);
+                                                                            effect13->setYOffset(2);
+                                                                            effect13->setColor(Qt::lightGray);
+                                                                            QGraphicsDropShadowEffect *effect14 = new QGraphicsDropShadowEffect;
+                                                                                effect14->setBlurRadius(20);
+                                                                                effect14->setXOffset(2);
+                                                                                effect14->setYOffset(2);
+                                                                                effect14->setColor(Qt::lightGray);
+                                                                                QGraphicsDropShadowEffect *effect15 = new QGraphicsDropShadowEffect;
+                                                                                    effect15->setBlurRadius(20);
+                                                                                    effect15->setXOffset(2);
+                                                                                    effect15->setYOffset(2);
+                                                                                    effect15->setColor(Qt::lightGray);
+                                                                                    QGraphicsDropShadowEffect *effect16 = new QGraphicsDropShadowEffect;
+                                                                                        effect16->setBlurRadius(20);
+                                                                                        effect16->setXOffset(2);
+                                                                                        effect16->setYOffset(2);
+                                                                                        effect16->setColor(Qt::lightGray);
+                                                                                        QGraphicsDropShadowEffect *effect18 = new QGraphicsDropShadowEffect;
+                                                                                            effect18->setBlurRadius(20);
+                                                                                            effect18->setXOffset(2);
+                                                                                            effect18->setYOffset(2);
+                                                                                            effect18->setColor(Qt::lightGray);
+                                                                                            QGraphicsDropShadowEffect *effect19 = new QGraphicsDropShadowEffect;
+                                                                                                effect19->setBlurRadius(20);
+                                                                                                effect19->setXOffset(2);
+                                                                                                effect19->setYOffset(2);
+                                                                                                effect19->setColor(Qt::lightGray);
+                                                                                                QGraphicsDropShadowEffect *effect20 = new QGraphicsDropShadowEffect;
+                                                                                                    effect20->setBlurRadius(20);
+                                                                                                    effect20->setXOffset(2);
+                                                                                                    effect20->setYOffset(2);
+                                                                                                    effect20->setColor(Qt::lightGray);
+                                                                                                    QGraphicsDropShadowEffect *effect21 = new QGraphicsDropShadowEffect;
+                                                                                                        effect21->setBlurRadius(20);
+                                                                                                        effect21->setXOffset(2);
+                                                                                                        effect21->setYOffset(2);
+                                                                                                        effect21->setColor(Qt::lightGray);
+                                                                                                        QGraphicsDropShadowEffect *effect22 = new QGraphicsDropShadowEffect;
+                                                                                                            effect22->setBlurRadius(20);
+                                                                                                            effect22->setXOffset(2);
+                                                                                                            effect22->setYOffset(2);
+                                                                                                            effect22->setColor(Qt::lightGray);
+                                                                                                            QGraphicsDropShadowEffect *effect23 = new QGraphicsDropShadowEffect;
+                                                                                                                effect23->setBlurRadius(20);
+                                                                                                                effect23->setXOffset(2);
+                                                                                                                effect23->setYOffset(2);
+                                                                                                                effect23->setColor(Qt::lightGray);
+                                                                                                                QGraphicsDropShadowEffect *effect24 = new QGraphicsDropShadowEffect;
+                                                                                                                    effect24->setBlurRadius(20);
+                                                                                                                    effect24->setXOffset(2);
+                                                                                                                    effect24->setYOffset(2);
+                                                                                                                    effect24->setColor(Qt::lightGray);
+                                                                                                                    QGraphicsDropShadowEffect *effect25 = new QGraphicsDropShadowEffect;
+                                                                                                                        effect25->setBlurRadius(20);
+                                                                                                                        effect25->setXOffset(2);
+                                                                                                                        effect25->setYOffset(2);
+                                                                                                                        effect25->setColor(Qt::lightGray);
+
                               /*===================end effects=====*/
     ui->tricombo->setGraphicsEffect(effect5);
     ui->groupBox->setGraphicsEffect(effect1);
@@ -146,6 +245,26 @@ notification();
     ui->chercherevent->setGraphicsEffect(effect3);
     ui->label_done->setGraphicsEffect(effect2);
     ui->label_wrong->setGraphicsEffect(effect4);
+    ui->groupBox_5->setGraphicsEffect(effect6);
+    ui->groupBox_4->setGraphicsEffect(effect7);
+
+        ui->groupBox_11->setGraphicsEffect(effect9);
+        ui->groupBox_12->setGraphicsEffect(effect10);
+        ui->groupBox_2->setGraphicsEffect(effect11);
+        ui->groupBox_6->setGraphicsEffect(effect12);
+        ui->groupBox_7->setGraphicsEffect(effect13);
+        ui->groupBox_8->setGraphicsEffect(effect14);
+        ui->groupBox_9->setGraphicsEffect(effect15);
+        ui->groupBox_10->setGraphicsEffect(effect16);
+ui->recherceremp->setGraphicsEffect(effect18);
+ui->empcombo->setGraphicsEffect(effect19);
+ui->rechercherClient->setGraphicsEffect(effect20);
+ui->clientComboBox->setGraphicsEffect(effect21);
+ui->recherchemark->setGraphicsEffect(effect22);
+ui->markcombo->setGraphicsEffect(effect23);
+ui->rechercher_partenaire->setGraphicsEffect(effect24);
+ui->trier_partenaire->setGraphicsEffect(effect25);
+
     /*=====================effects ============0*/
     ui->label_cl->hide();
     ui->loginlab->show();
@@ -503,7 +622,37 @@ int cinclient=0;
                                    chartView4->setParent(ui->statemp);
                                    chartView4->show();
 
+//*********************************************************************************************************************************************************
+                                   ui->trier_partenaire->addItem("par défaut");
+                                   ui->trier_partenaire->addItem("ID");
+                                   ui->trier_partenaire->addItem("NOM");
+                                   ui->trier_partenaire->addItem("NUMERO");
 
+                                   QGraphicsDropShadowEffect *effect17 = new QGraphicsDropShadowEffect;
+                                       effect17->setBlurRadius(20);
+                                       effect17->setXOffset(2);
+                                       effect17->setYOffset(2);
+                                       effect17->setColor(Qt::lightGray);
+
+                                   QString text ="dosssier partenaire details :"+ ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),1)).toString()
+                                                        +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),2)).toString()
+                                                        +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),3)).toString()
+                                                        +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),4)).toString()
+                                                        +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),5)).toString()
+                                                        +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),6)).toString();
+                                                //text="user data";
+                                                using namespace qrcodegen;
+                                                  // Create the QR Code object
+                                                  QrCode qr = QrCode::encodeText( text.toUtf8().data(), QrCode::Ecc::MEDIUM );
+                                                  qint32 sz = qr.getSize();
+                                                  QImage im(sz,sz, QImage::Format_RGB32);
+                                                    QRgb black = qRgb(  0,  0,  0);
+                                                    QRgb white = qRgb(255,255,255);
+                                                  for (int y = 0; y < sz; y++)
+                                                    for (int x = 0; x < sz; x++)
+                                                      im.setPixel(x,y,qr.getModule(x, y) ? black : white );
+                                                  ui->qr_code->setGraphicsEffect(effect8);
+                                                  ui->qr->setPixmap( QPixmap::fromImage(im.scaled(256,256,Qt::KeepAspectRatio,Qt::FastTransformation),Qt::MonoOnly) );
 }
 
 gestien::~gestien()
@@ -1567,6 +1716,12 @@ void gestien::on_fichier_xl_clicked()
 
 void gestien::on_pushButton_5_clicked()
 {
+    QGraphicsDropShadowEffect *effect8 = new QGraphicsDropShadowEffect;
+        effect8->setBlurRadius(20);
+        effect8->setXOffset(2);
+        effect8->setYOffset(2);
+        effect8->setColor(Qt::lightGray);
+
     QString text ="dosssier partenaire details :"+ ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),1)).toString()
                          +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),2)).toString()
                          +" "+ui->tableView_3->model()->data(ui->tableView_3->model()->index(ui->tableView_3->currentIndex().row(),3)).toString()
@@ -1584,7 +1739,8 @@ void gestien::on_pushButton_5_clicked()
                    for (int y = 0; y < sz; y++)
                      for (int x = 0; x < sz; x++)
                        im.setPixel(x,y,qr.getModule(x, y) ? black : white );
-                   ui->qr_code->setPixmap( QPixmap::fromImage(im.scaled(256,256,Qt::KeepAspectRatio,Qt::FastTransformation),Qt::MonoOnly) );
+                   ui->qr_code->setGraphicsEffect(effect8);
+                   ui->qr->setPixmap( QPixmap::fromImage(im.scaled(256,256,Qt::KeepAspectRatio,Qt::FastTransformation),Qt::MonoOnly) );
 
 }
 
@@ -1594,21 +1750,7 @@ void gestien::on_rechercher_partenaire_textChanged(const QString &arg1)
     ui->tableView_3->setModel(p.Recherche(arg1));
 }
 
-void gestien::on_trier_partenaire_activated()
-{
-    if (ui->trier_partenaire->currentText()=="Tri Par ID")
-    {
-        ui->tableView_3->setModel(p.trierpartenaireParid());
-    }
-    else if(ui->trier_partenaire->currentText()=="Tri Par NOM")
-    {
-        ui->tableView_3->setModel(p.trierpartenairenom());
-    }
-    else
-    {
-        ui->tableView_3->setModel(p.trierpartenaireParnum_partenaire());
-    }
-}
+
 
 void gestien::on_modifier_partenair_clicked()
 {
@@ -2073,11 +2215,15 @@ void gestien::on_stop_2_clicked()
 
 void gestien::on_mute_2_clicked()
 {
-    if(ui->mute_2->text()=="mute"){
+    if(vl==0){
     mMediaPlayer->setMuted(true);
-    ui->mute_2->setText("unmute");
+    ui->mute_2->setIcon(QIcon(":/image/image/mute.png"));
+    ui->mute_2->setIconSize(QSize(20, 16));
+    vl=1;
     }else {mMediaPlayer->setMuted(false);
-        ui->mute_2->setText("mute");
+        ui->mute_2->setIcon(QIcon(":/image/image/volume.png"));
+        ui->mute_2->setIconSize(QSize(20, 16));
+        vl=0;
     }
 }
 
@@ -2301,4 +2447,18 @@ void gestien::on_pushButton_10_clicked()
         printer.setPrinterName("test");
         QPrintDialog dialog(&printer,this);
         if (dialog.exec()==QDialog::Rejected) return;
+}
+
+void gestien::on_pushButton_4_clicked()
+{
+    int id=0;
+
+      int num_partenaire=0;
+       int prix=0;
+      QString nom="";
+      QString email="";
+
+      partenaire p(id,num_partenaire,prix,nom,email);
+    QString trieOption=ui->trier_partenaire->currentText();
+     ui->tableView_3->setModel(p.trierpart(trieOption));
 }

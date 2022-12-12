@@ -34,9 +34,7 @@ public:
     QSqlQueryModel * afficher();
     bool supprimer(int);
     bool modifierpartenaire(int id, int num_partenaire, int prix, QString nom, QString email);
-    QSqlQueryModel * trierpartenaireParid();
-    QSqlQueryModel * trierpartenairenom();
-    QSqlQueryModel * trierpartenaireParnum_partenaire();
+   QSqlQueryModel *trierpart(QString test);
     QSqlQueryModel * Recherche(QString);
 
 

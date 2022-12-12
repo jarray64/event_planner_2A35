@@ -10,6 +10,32 @@
         <file>image/logout.png</file>
         <file>image/user.png</file>
         <file>image/upload.png</file>
+        <file>image/email.png</file>
+        <file>image/pdf.png</file>
+        <file>image/phone-call.png</file>
+        <file>image/refresh.png</file>
+        <file>image/sort.png</file>
+        <file>image/pdf2.png</file>
+        <file>image/customer-support.png</file>
+        <file>image/excel.png</file>
+        <file>image/trash-icon.png</file>
+        <file>image/volume.png</file>
+        <file>image/icons8-google-maps-old-48.png</file>
+        <file>image/icons8-add-image-48.png</file>
+        <file>image/icons8-slice-48.png</file>
+        <file>image/icons8-send-to-printer-48.png</file>
+        <file>image/icons8-modify-58.png</file>
+        <file>image/icons8-plus-math-100.png</file>
+        <file>image/icons8-video-48.png</file>
+        <file>image/icons8-best-seller-48.png</file>
+        <file>image/icons8-order-history-48.png</file>
+        <file>image/icons8-qr-code-64.png</file>
+        <file>image/mute.png</file>
+        <file>image/icons8-cancel-24.png</file>
+        <file>image/icons8-pause-squared-50.png</file>
+        <file>image/icons8-play-50.png</file>
+        <file>image/icons8-replay-30-24.png</file>
+        <file>image/cancel.png</file>
     </qresource>
     <qresource prefix="/new/traduction">
         <file>anglais.qm</file>

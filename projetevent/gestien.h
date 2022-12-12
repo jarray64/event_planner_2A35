@@ -31,6 +31,7 @@
 #include <QPieSeries>
 #include <QtCharts>
 #include "employe.h"
+#include "mainwindow.h"
 namespace Ui {
 class gestien;
 }
@@ -143,7 +144,7 @@ private slots:
 
      void on_rechercher_partenaire_textChanged(const QString &arg1);
 
-     void on_trier_partenaire_activated();
+
 
      void on_modifier_partenair_clicked();
 
@@ -207,6 +208,8 @@ private slots:
      void on_pushButton_9_clicked();
 
      void on_pushButton_10_clicked();
+
+     void on_pushButton_4_clicked();
 
 private:
     Ui::gestien *ui;

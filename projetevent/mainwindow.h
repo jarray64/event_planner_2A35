@@ -14,12 +14,13 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+   QString userlog;
 private slots:
     void on_pushButton_login_clicked();
 
 
 private:
     Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H

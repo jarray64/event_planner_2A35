@@ -98,41 +98,30 @@ bool partenaire::modifierpartenaire(int id, int num_partenaire, int prix, QStrin
 
 }
 
-//Trie Par id
-QSqlQueryModel * partenaire::trierpartenaireParid()
+
+
+
+
+QSqlQueryModel * partenaire::trierpart(QString test)
 {
+    QSqlQueryModel * model=new QSqlQueryModel();
+    if(test == "par défaut"){
+        model->setQuery("SELECT * from partenaire");
+    }
+    else if(test =="ID")
+    {
+        model->setQuery("SELECT * FROM partenaire order by id ASC ");
+    }
+    else if(test =="NOM")
+    {
+        model->setQuery("select * FROM partenaire order by nom ASC ");
+    }
+    else if(test =="NUMERO")
+    {
+        model->setQuery("SELECT * FROM partenaire order by numero ASC");
+    }
 
-    QSqlQuery * q = new  QSqlQuery ();
-           QSqlQueryModel * model = new  QSqlQueryModel ();
-           q->prepare("SELECT * FROM partenaire order by id ASC");
-           q->exec();
-           model->setQuery(*q);
-           return model;
-}
-
-//Trie Par nom
-QSqlQueryModel * partenaire::trierpartenairenom()
-{
-
-    QSqlQuery * q = new  QSqlQuery ();
-           QSqlQueryModel * model = new  QSqlQueryModel ();
-           q->prepare("partenaire * FROM partenaire order by nom ASC");
-           q->exec();
-           model->setQuery(*q);
-           return model;
-
-}
-
-//Trie Par num_partenaire
-QSqlQueryModel * partenaire::trierpartenaireParnum_partenaire()
-{
-
-    QSqlQuery * q = new  QSqlQuery ();
-           QSqlQueryModel * model = new  QSqlQueryModel ();
-           q->prepare("SELECT * FROM partenaire order by num_partenaire ASC");
-           q->exec();
-           model->setQuery(*q);
-           return model;
+    return model;
 }
 QSqlQueryModel * partenaire::Recherche(QString a)
 {
